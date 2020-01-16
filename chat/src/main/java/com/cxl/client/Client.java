@@ -4,6 +4,7 @@ import com.cxl.common.Protocol;
 
 import javax.swing.*;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
@@ -46,20 +47,34 @@ public class Client {
 
     public void readAndSend() {
         try {
-            String line ;
+            String line;
             while ((line = key.readLine()) != null) {
                 //如果发送的消息中带有冒号,且以@开头,则为私聊信息
                 if (line.indexOf(":") > 0 && line.startsWith("@")) {
-                    line=line.substring(1);
-                    String[] lines=line.split(":");
-                    printStream.println(Protocol.PRIVATE_ROND+lines[0]+Protocol.SPLIT_SIGN+lines[1]+Protocol.PRIVATE_ROND);
-                }else if (line.startsWith("@@")){
-                    line=line.substring(2);
-                    printStream.println(Protocol.MSG_ROND+line.split(":")[0]+Protocol.SPLIT_SIGN+Protocol.MSG_ROND);
+                    line = line.substring(1);
+                    String[] lines = line.split(":");
+                    printStream.println(Protocol.PRIVATE_ROND + lines[0] + Protocol.SPLIT_SIGN + lines[1] + Protocol.PRIVATE_ROND);
+                } else if (line.startsWith("@@")) {
+                    line = line.substring(2);
+                    printStream.println(Protocol.MSG_ROND + line+ Protocol.SPLIT_SIGN + Protocol.MSG_ROND);
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (key != null) {
+                    key.close();
+                }
+                if (brServer != null) {
+                    brServer.close();
+                }
+                if (socket != null) {
+                    socket.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
