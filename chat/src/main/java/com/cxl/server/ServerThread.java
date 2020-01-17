@@ -45,6 +45,8 @@ public class ServerThread extends Thread {
                     for (PrintStream ps: Server.chatMap.valueSet()) {
                         ps.println("群聊信息 来自"+Server.chatMap.getKeyByValue(printStream)+" : "+msgs[0]);
                     }
+                }else if ("exit".equals(line)){
+                    Server.chatMap.removeByValue(printStream);
                 }
             }
         } catch (IOException e) {

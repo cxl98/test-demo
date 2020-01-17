@@ -57,6 +57,9 @@ public class Client {
                 } else if (line.startsWith("@@")) {
                     line = line.substring(2);
                     printStream.println(Protocol.MSG_ROND + line+ Protocol.SPLIT_SIGN + Protocol.MSG_ROND);
+                }else if ("exit".equals(line)){
+                    printStream.println("exit");
+                    System.exit(0);
                 }
             }
         } catch (Exception e) {
@@ -71,6 +74,9 @@ public class Client {
                 }
                 if (socket != null) {
                     socket.close();
+                }
+                if (printStream!=null){
+                    printStream.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();

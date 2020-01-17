@@ -10,6 +10,7 @@ import java.net.Socket;
 public class Server {
     private ServerSocket serverSocket = null;
     private final int SERVER_PORT = 9999;
+    private Socket socket=null;
 
     public static ChatMap<String, PrintStream> chatMap = new ChatMap<String, PrintStream>();
 
@@ -17,9 +18,10 @@ public class Server {
         try {
             serverSocket = new ServerSocket(SERVER_PORT);
             while (true) {
-                Socket socket = serverSocket.accept();
+                 socket = serverSocket.accept();
                 new ServerThread(socket).start();
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
