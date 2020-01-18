@@ -8,11 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="chat" />
         <module name="com-email" />
+        <module name="test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="chat" target="1.5" />
+      <module name="chat" target="6" />
       <module name="com-email" target="1.5" />
+      <module name="test" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
