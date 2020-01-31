@@ -15,9 +15,9 @@ public class IteratorTest {
         bookShelf.append(new Book("你好5"));
         bookShelf.append(new Book("你好6"));
         bookShelf.append(new Book("你好7"));
-        Iterator it=bookShelf.iterator();
-        while(it.hasNext()){
-            Book book= (Book) it.next();
+        Iterator it = bookShelf.iterator();
+        while (it.hasNext()) {
+            Book book = (Book) it.next();
             System.out.println(book.getName());
         }
     }

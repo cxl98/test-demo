@@ -14,9 +14,6 @@ public class BookShelf implements Aggregate {
     public void append(Book e){
         books.add(e);
     }
-    public void remove(int index){
-        books.remove(index);
-    }
     public int getLength(){
         return books.size();
     }

@@ -18,8 +18,4 @@ public class BookShelfIterator implements Iterator {
         index++;
         return book;
     }
-
-    public void remove() {
-        bookShelf.remove(index);
-    }
 }
