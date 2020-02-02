@@ -5,7 +5,7 @@ public abstract class Factory {
         Product product=createProduct(owner);
         registerProduct(product);
         return product;
-    };
-    public abstract Product createProduct(String owner);
-    public abstract void registerProduct(Product product);
+    }
+    protected abstract Product createProduct(String owner);
+    protected abstract void registerProduct(Product product);
 }
