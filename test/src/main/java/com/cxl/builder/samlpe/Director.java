@@ -1,7 +1,5 @@
 package com.cxl.builder.samlpe;
 
-import com.cxl.builder.samlpe.Builder;
-
 public class Director {
     private Builder builder;
 
