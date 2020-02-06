@@ -28,8 +28,4 @@ public class UnderlinePen implements Product {
         }
         return product;
     }
-
-    public void use() {
-
-    }
 }
