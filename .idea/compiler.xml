@@ -13,10 +13,10 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="chat" target="6" />
-      <module name="com-email" target="1.5" />
-      <module name="netty-rpc" target="1.5" />
-      <module name="test" target="1.5" />
+      <module name="chat" target="8" />
+      <module name="com-email" target="8" />
+      <module name="netty-rpc" target="8" />
+      <module name="test" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -11,7 +11,7 @@ public class Test {
     public static void main(String[] args) {
         Buyer buyer=new VipBuyer();
         Cashier cashier=new Cashier(buyer);
-        BigDecimal quote= (BigDecimal) cashier.quote(BigDecimal.valueOf(300));
+        BigDecimal quote= cashier.quote(BigDecimal.valueOf(300));
         System.out.println("普通会员商品的最终价格为："+quote.doubleValue());
 
         buyer=new SuperVipBuyer();
