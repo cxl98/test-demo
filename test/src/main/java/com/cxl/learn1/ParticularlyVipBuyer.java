@@ -1,7 +1,5 @@
 package com.cxl.learn1;
 
-import com.cxl.learn1.Buyer;
-
 import java.math.BigDecimal;
 
 public class ParticularlyVipBuyer implements Buyer {
