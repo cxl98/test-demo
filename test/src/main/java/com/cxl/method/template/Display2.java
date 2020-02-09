@@ -13,19 +13,19 @@ public class Display2 extends AbstractDisplay {
         printFormat();
     }
 
-    private void printFormat() {
-        System.out.print("+");
-        for (int i = 0; i < width; i++) {
-            System.out.print("-");
-        }
-        System.out.println("+");
-    }
-
     public void print() {
         System.out.println(string);
     }
 
     public void close() {
         printFormat();
+    }
+
+    private void printFormat() {
+        System.out.print("+");
+        for (int i = 0; i < width; i++) {
+            System.out.print("-");
+        }
+        System.out.println("+");
     }
 }
