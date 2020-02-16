@@ -4,10 +4,10 @@ import com.cxl.bridge.implementor.DisplayImpl;
 
 import java.util.Random;
 
-public class RandDispaly extends CountDisplay{
+public class RandDisplay extends CountDisplay{
     private Random random=new Random();
 
-    public RandDispaly(DisplayImpl display) {
+    public RandDisplay(DisplayImpl display) {
         super(display);
     }
 

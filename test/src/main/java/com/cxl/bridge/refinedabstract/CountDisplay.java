@@ -12,7 +12,6 @@ public class CountDisplay extends Display {
     public void multiDisplay(int size){
         open();
         for (int i = 0; i < size; i++) {
-            System.out.print(i+":");
             print();
         }
         close();
