@@ -1,41 +1,40 @@
 package com.cxl.strategy;
 
 
-import com.cxl.strategy.A2.Hand1;
-import com.cxl.strategy.A2.Player;
-import com.cxl.strategy.A2.ProbStrategy;
-import com.cxl.strategy.A2.WinStrategy;
-import com.cxl.strategy.A3.SelectSort;
-import com.cxl.strategy.A3.Sort;
-import com.cxl.strategy.A3.SortAndPrint;
+import com.cxl.strategy.A1.Hand;
+import com.cxl.strategy.A1.Player;
+import com.cxl.strategy.A1.ProbStrategy;
+import com.cxl.strategy.A1.WinStrategy;
+
+import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args) {
 //        Scanner scanner=new Scanner(System.in);
 //        int seed = scanner.nextInt();
 //        int seed1 = scanner.nextInt();
-//        Player player = new Player("xxx", new WinStrategy(seed));
-//        Player player1 = new Player("aaa", new ProbStrategy(seed1));
-//        for (int i = 0; i < 10; i++) {
-//            Hand hand = player.nextHand();
-//            Hand hand1 = player1.nextHand();
-//            if ( hand.isWin( hand1)) {
-//                System.out.println("Winner" + player);
-//                player.win();
-//                player1.lose();
-//            } else if (hand1.isWin( hand)) {
-//                System.out.println("Winner" + player1);
-//                player1.win();
-//                player.lose();
-//            }else {
-//                System.out.println("Even....");
-//                player.even();
-//                player1.even();
-//            }
-//        }
-//        System.out.println("Total result");
-//        System.out.println(player.toString());
-//        System.out.println(player1.toString());
+        Player player = new Player("xxx", new WinStrategy());
+        Player player1 = new Player("aaa", new ProbStrategy());
+        for (int i = 0; i < 10; i++) {
+            Hand hand = player.nextHand();
+            Hand hand1 = player1.nextHand();
+            if ( hand.isWin( hand1)) {
+                System.out.println("Winner" + player);
+                player.win();
+                player1.lose();
+            } else if (hand1.isWin( hand)) {
+                System.out.println("Winner" + player1);
+                player1.win();
+                player.lose();
+            }else {
+                System.out.println("Even....");
+                player.even();
+                player1.even();
+            }
+        }
+        System.out.println("Total result");
+        System.out.println(player.toString());
+        System.out.println(player1.toString());
 
 
 
@@ -66,10 +65,10 @@ public class Test {
 //        System.out.println(b.toString());
 
 
-        Sort sort=new SelectSort();
-        String[] data={"Almpty", "Bowman", "Barroll", "Elfland", "Alice"};
-        SortAndPrint sortAndPrint=new SortAndPrint(data,sort);
-        sortAndPrint.execute();
+//        Sort sort=new SelectSort();
+//        String[] data={"Almpty", "Bowman", "Barroll", "Elfland", "Alice"};
+//        SortAndPrint sortAndPrint=new SortAndPrint(data,sort);
+//        sortAndPrint.execute();
 
     }
 }
