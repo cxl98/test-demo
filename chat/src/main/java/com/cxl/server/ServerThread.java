@@ -30,6 +30,7 @@ public class ServerThread extends Thread {
                     if (Server.chatMap.map.containsKey(userName)) {
                         printStream.println(Protocol.NAME_EER);
                     }else{
+                        System.out.println(""+userName+" 登录成功，你可以开始聊天了！");
                         printStream.println(Protocol.LOGIN_SUCCESS);
                         //将用户名和输出流对象组成的键值关联对存入前面经过改造的map
                         Server.chatMap.map.put(userName,printStream);

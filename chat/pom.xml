@@ -10,12 +10,27 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
+                <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
-                    <source>6</source>
-                    <target>6</target>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.cxl.client.Client</mainClass>
+                        </manifest>
+                    </archive>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>assembly</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
