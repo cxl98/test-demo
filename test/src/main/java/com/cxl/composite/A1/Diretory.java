@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Diretory extends Entry {
-    private ArrayList<Entry> directory=new ArrayList<>();
+    private ArrayList<Entry> directory=new ArrayList<Entry>();
     public Diretory(String name) {
         super(name);
     }

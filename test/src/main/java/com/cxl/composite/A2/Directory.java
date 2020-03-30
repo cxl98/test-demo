@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Directory extends Entry {
     private String name;
-    private ArrayList<Entry> arrayList=new ArrayList<>();
+    private ArrayList<Entry> arrayList=new ArrayList<Entry>();
     public Directory(String name) {
         this.name=name;
     }

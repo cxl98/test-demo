@@ -10,7 +10,7 @@ public class WinStrategy implements Strategy1 {
         random = new Random();
     }
 
-    @Override
+
     public Hand1 nextHand() {
         if (!won) {
             prevHand=Hand1.getHand(random.nextInt(3));
@@ -18,8 +18,9 @@ public class WinStrategy implements Strategy1 {
         return prevHand;
     }
 
-    @Override
     public void study(boolean win) {
         won=win;
     }
+
+
 }

@@ -24,7 +24,7 @@ public class ProbStrategy implements Strategy1 {
         return sum;
     }
 
-    @Override
+
     public Hand1 nextHand() {
         int bet=random.nextInt(getSum(currentHandValue));
         int handValue;
@@ -40,7 +40,6 @@ public class ProbStrategy implements Strategy1 {
         return Hand1.getHand(handValue);
     }
 
-    @Override
     public void study(boolean win) {
         if (win) {
             history[prevHandValue][currentHandValue]++;
@@ -49,4 +48,6 @@ public class ProbStrategy implements Strategy1 {
             history[prevHandValue][(currentHandValue+2)%3]++;
         }
     }
+
+
 }
