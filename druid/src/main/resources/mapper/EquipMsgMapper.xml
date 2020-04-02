@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cxl.dom.EquipMsgMapper">
+
+    <insert id="add" parameterType="com.cxl.entry.EquipMsg" useGeneratedKeys="true" keyProperty="id">
+        insert into equipment_message
+         (  equip_id,
+            eq_name,
+            attack,
+            phy_def,
+            eq_hp,
+            eq_mp,
+            eq_value,
+            eq_place,
+            details,
+            quality)
+            values (#{equip_id},#{eq_name},#{attack},#{phy_def},#{eq_hp},#{eq_mp}#{eq_value},#{eq_place},#{details},#{quality})
+    </insert>
+
+
+    <!--用于加载装备列表，已装备或者是背包中的装备均可复用-->
+    <select id="getEquipMents"  resultType="com.cxl.entry.EquipMsg" parameterType="java.util.List">
+        select equip_id,
+               eq_name,
+               attack,
+               phy_def,
+               eq_hp,
+               eq_mp,
+               eq_value,
+               eq_place,
+               details,
+               quality from equipment_message
+        where equip_id in
+        <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <!--用于加载所有装备-->
+    <select id="getAllEquipMents"  resultType="com.cxl.entry.EquipMsg" parameterType="java.util.List">
+        select equip_id,
+        eq_name,
+        attack,
+        phy_def,
+        eq_hp,
+        eq_mp,
+        eq_value,
+        eq_place,
+        details,
+        quality from equipment_message
+    </select>
+</mapper>

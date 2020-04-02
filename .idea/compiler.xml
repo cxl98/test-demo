@@ -8,6 +8,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="chat" />
         <module name="com-email" />
+        <module name="druid" />
+        <module name="hakaricp" />
         <module name="netty-rpc" />
         <module name="test" />
       </profile>
@@ -15,6 +17,8 @@
     <bytecodeTargetLevel>
       <module name="chat" target="1.5" />
       <module name="com-email" target="1.5" />
+      <module name="druid" target="8" />
+      <module name="hakaricp" target="8" />
       <module name="netty-rpc" target="1.5" />
       <module name="test" target="8" />
     </bytecodeTargetLevel>
