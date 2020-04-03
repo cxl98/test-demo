@@ -1,33 +1,34 @@
 package com.cxl;
 
-import com.alibaba.fastjson.JSON;
-import com.cxl.hakaricp.HikariCPProperties;
+import com.zaxxer.hikari.HikariDataSource;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.sql.DataSource;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.*;
+import java.util.Properties;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
 public class ConnectTest {
-    @Autowired
-    ApplicationContext applicationContext;
-
-    @Autowired
-    HikariCPProperties hikariCPProperties;
-
     @Test
-    public void connectDataSource(){
-        DataSource dataSource=applicationContext.getBean(DataSource.class);
-        long start = System.currentTimeMillis();
-        System.out.println(dataSource);
-        System.out.println(dataSource.getClass().getName());
-        System.out.println(JSON.toJSONString(hikariCPProperties));
-        long end = System.currentTimeMillis();
-        System.out.println("执行了"+(end-start)+"秒");
+    public void connectDataSource() throws IOException, SQLException {
+        Properties properties = new Properties();
+        InputStream inputStream = new FileInputStream("/home/cxl/cxl/test-demo/hakaricp/src/main/resources/db.properties");
+        properties.load(inputStream);
+        String driverClassName = properties.getProperty("spring.datasource.type");
+        String url = properties.getProperty("spring.datasource.url");
+        String username = properties.getProperty("spring.datasource.username");
+        String password = properties.getProperty("spring.datasource.password");
+
+        HikariDataSource hikariDataSource = new HikariDataSource();
+        hikariDataSource.setDriverClassName(driverClassName);
+        hikariDataSource.setJdbcUrl(url);
+        hikariDataSource.setUsername(username);
+        hikariDataSource.setPassword(password);
+        long l = System.currentTimeMillis();
+        Connection connection = hikariDataSource.getConnection();
+        System.out.println(connection.getClass().getName());
+        long l1 = System.currentTimeMillis();
+        System.out.println(l1-l+"秒");
     }
 }

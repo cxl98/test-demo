@@ -11,6 +11,7 @@
         <module name="druid" />
         <module name="hakaricp" />
         <module name="netty-rpc" />
+        <module name="redis" />
         <module name="test" />
       </profile>
     </annotationProcessing>
@@ -20,6 +21,7 @@
       <module name="druid" target="8" />
       <module name="hakaricp" target="8" />
       <module name="netty-rpc" target="1.5" />
+      <module name="redis" target="1.5" />
       <module name="test" target="8" />
     </bytecodeTargetLevel>
   </component>

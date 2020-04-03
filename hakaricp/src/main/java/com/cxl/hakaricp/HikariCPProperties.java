@@ -1,8 +1,10 @@
 package com.cxl.hakaricp;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
+@ConfigurationProperties(prefix = "spring.datasource.hikari")
 public class HikariCPProperties {
     private String url;
     private String username;
