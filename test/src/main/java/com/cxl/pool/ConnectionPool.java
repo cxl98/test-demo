@@ -23,7 +23,6 @@ public interface ConnectionPool {
      * 释放掉连接
      */
     void releaseConnection(Connection connection);
-
     /**
      * 销毁连接池
      */

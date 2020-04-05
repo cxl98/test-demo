@@ -82,8 +82,11 @@ public class ConnectionImpl implements ConnectionPool {
         }
     }
 
+
     public void destroy() {
-        busyConnectionPool.clear();
-        idleConnectionPool.clear();
+        if (busyConnectionPool.isEmpty() && idleConnectionPool.isEmpty()) {
+            busyConnectionPool.clear();
+            idleConnectionPool.clear();
+        }
     }
 }

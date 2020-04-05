@@ -10,12 +10,16 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DBUtil {
-
+    private static final DBUtil instance=new DBUtil();
     private static String jdbcDriver;
     private static String jdbcUrl;
     private static String userName;
     private static String password;
-
+    private DBUtil(){
+    }
+    public DBUtil getInstance(){
+        return instance;
+    }
     public static Connection getConnection() throws SQLException {
         File config=new File("/home/cxl/cxl/test-demo/test/src/main/resources/mysql.properties");
         Properties properties=new Properties();
