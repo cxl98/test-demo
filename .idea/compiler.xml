@@ -10,6 +10,7 @@
         <module name="com-email" />
         <module name="druid" />
         <module name="hakaricp" />
+        <module name="netty-chat" />
         <module name="netty-rpc" />
         <module name="redis" />
         <module name="test" />
@@ -20,6 +21,7 @@
       <module name="com-email" target="1.5" />
       <module name="druid" target="8" />
       <module name="hakaricp" target="8" />
+      <module name="netty-chat" target="8" />
       <module name="netty-rpc" target="1.5" />
       <module name="redis" target="1.5" />
       <module name="test" target="8" />
