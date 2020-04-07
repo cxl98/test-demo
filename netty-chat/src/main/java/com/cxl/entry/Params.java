@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.ToString;
 
 @Data
-@ToString
 public class Params {
     /**
      * p    私人消息
@@ -31,7 +30,15 @@ public class Params {
         this.code = "200";
         this.data = data;
     }
-
     public Params() {
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "type:'" + type + '\'' +
+                ", code:'" + code + '\'' +
+                ", data:" + data +
+                '}';
     }
 }

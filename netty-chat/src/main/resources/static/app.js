@@ -38,9 +38,9 @@ $(function () {
         socket = new WebSocket(address);
 
         socket.onmessage = function(event){
-
+            console.log(event.data)
             let obj=eval('(' + event.data + ')');
-            // console.log(obj)
+
             if (obj.payLoad!=null||obj.payLoad!=undefined){
                 if (obj.payLoad.type==Protocol.PrivateChat){
                     showGreeting(obj);
@@ -155,7 +155,7 @@ function requestUsers() {
         contentType : 'application/json;charset=UTF-8',
         url: basePath+"/getOnlineUser",//url
         success: function (result) {
-            // console.log(result);//打印服务端返回的数据(调试用)
+            console.log(result);//打印服务端返回的数据(调试用)
             if (result!=null&&result!=undefined) {
                 showOnlineUser(result);
                 onlineUser=result;
@@ -297,7 +297,7 @@ function groupApplyFeedback(groupName) {
             groupName:groupName
         },
         success: function (result) {
-            // console.log(result);//打印服务端返回的数据(调试用)
+            console.log(result);//打印服务端返回的数据(调试用)
             if (result.code=="200") {
                 apendGroupList(groupName)
             }else{
