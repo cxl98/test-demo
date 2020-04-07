@@ -1,4 +1,4 @@
-let address="ws://39.106.184.48:8888/websocket?"+name;
+let address="ws://127.0.0.1:8889/websocket?"+name;
 let onlineUser=[];//在线用户集合
 let socket;//socket对象，用于全局激活send操作
 let channelId;//当前用户通道的id
