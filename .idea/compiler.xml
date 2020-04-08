@@ -22,7 +22,7 @@
       <module name="druid" target="8" />
       <module name="hakaricp" target="8" />
       <module name="netty-chat" target="8" />
-      <module name="netty-rpc" target="1.5" />
+      <module name="netty-rpc" target="7" />
       <module name="redis" target="1.5" />
       <module name="test" target="8" />
     </bytecodeTargetLevel>

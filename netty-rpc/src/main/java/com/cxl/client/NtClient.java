@@ -11,6 +11,8 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,8 +36,8 @@ public class NtClient {
                        .handler(new ChannelInitializer<SocketChannel>() {
                            @Override
                            protected void initChannel(SocketChannel ch) throws Exception {
-                               ch.pipeline().addLast(new ObjectDecoder(ClassResolvers.weakCachingConcurrentResolver(this.getClass().getClassLoader())));
-                               ch.pipeline().addLast(new ObjectEncoder());
+                               ch.pipeline().addLast(new StringDecoder());
+                               ch.pipeline().addLast(new StringEncoder());
                                ch.pipeline().addLast(new CliHandler());
                            }
                        });
@@ -43,15 +45,15 @@ public class NtClient {
 
 
                Channel channel=b.connect(host,port).sync().channel();
-
                BufferedReader input=new BufferedReader(new InputStreamReader(System.in));
 
             while (true) {
-                System.out.println("测试"+input.readLine());
+//                System.out.println("测试"+input.readLine());
                 channel.writeAndFlush(input.readLine() + "\n");
             }
             } catch (IOException e) {
                 e.printStackTrace();
+                group.shutdownGracefully();
             }finally {
                 group.shutdownGracefully().sync();
             }

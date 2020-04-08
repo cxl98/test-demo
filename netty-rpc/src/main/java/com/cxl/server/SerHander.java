@@ -11,11 +11,9 @@ public class SerHander extends SimpleChannelInboundHandler<String> {
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         Channel inConfig=ctx.channel();//获取客户端的通道
-        System.out.println("SerHandler的handlerAdded"+inConfig);
-        //通知其他的客户端有新人进来
         for (Channel channel: channels){
             if (channel!=inConfig){
-                channel.writeAndFlush("欢迎:"+inConfig.remoteAddress()+"进入聊天室");
+                channel.writeAndFlush("欢迎:"+inConfig.remoteAddress()+"进入聊天室"+"\n");
             }
 
         }
@@ -25,10 +23,9 @@ public class SerHander extends SimpleChannelInboundHandler<String> {
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
         Channel outConfig=ctx.channel();//获取客服端的通道
-        System.out.println("SerHandler的handlerRemoved"+outConfig);
         for (Channel channel: channels){
             if (channel!=outConfig){
-                channel.writeAndFlush("再见"+outConfig.remoteAddress()+"离开聊天室!");
+                channel.writeAndFlush("再见"+outConfig.remoteAddress()+"离开聊天室!"+"\n");
             }
 
         }
@@ -39,13 +36,13 @@ public class SerHander extends SimpleChannelInboundHandler<String> {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         Channel inConfig=ctx.channel();
-        System.out.println(inConfig.remoteAddress()+":"+"在线");
+        System.out.println(inConfig.remoteAddress()+":"+"在线"+"\n");
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         Channel inConfig=ctx.channel();
-        System.out.println(inConfig.remoteAddress()+":"+"离线");
+        System.out.println(inConfig.remoteAddress()+":"+"离线"+"\n");
     }
 
 
@@ -59,10 +56,9 @@ public class SerHander extends SimpleChannelInboundHandler<String> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
         Channel inConfig=ctx.channel();
-        System.out.println(ctx);
-        System.out.println("SerHandler的handlerRead0111"+msg);
+        System.out.println("SerHandler的handlerRead0111"+msg+"\n");
         for (Channel channel: channels){
-            System.out.println("SerHandler的handlerRead0222"+msg);
+            System.out.println("SerHandler的handlerRead0222"+msg+"\n");
             if (channel!=inConfig){
                 channel.writeAndFlush("用户:"+inConfig.remoteAddress()+"说"+msg+"\n");
             }else{

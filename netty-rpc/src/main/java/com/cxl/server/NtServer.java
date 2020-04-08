@@ -11,6 +11,8 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
 
 public class NtServer {
     private  int port;
@@ -29,12 +31,12 @@ public class NtServer {
                       .channel(NioServerSocketChannel.class)
                       .option(ChannelOption.SO_BACKLOG,1024)
                       .option(ChannelOption.SO_KEEPALIVE,true)
-//                      .option(ChannelOption.TCP_NODELAY,true)
+                      .option(ChannelOption.TCP_NODELAY,true)
                       .childHandler(new ChannelInitializer<SocketChannel>() {
                           @Override
                           protected void initChannel(SocketChannel channel) throws Exception {
-                              channel.pipeline().addLast(new ObjectDecoder(ClassResolvers.weakCachingConcurrentResolver(this.getClass().getClassLoader())));
-                              channel.pipeline().addLast(new ObjectEncoder());
+                              channel.pipeline().addLast(new StringDecoder());
+                              channel.pipeline().addLast(new StringEncoder());
                               channel.pipeline().addLast(new SerHander());
                           }
                       });
