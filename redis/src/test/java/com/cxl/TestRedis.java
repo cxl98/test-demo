@@ -1,5 +1,6 @@
 package com.cxl;
 
+import entry.User;
 import io.lettuce.core.KeyValue;
 import io.lettuce.core.RedisClient;
 import io.lettuce.core.api.StatefulRedisConnection;
@@ -24,25 +25,28 @@ public class TestRedis {
     @Test
     public void insertString() {
         connection = redisClient.connect();
-        String value = connection.sync().set("b", "b");//设置key对应的值为string类型的value,返回1表示成功，0失败
+        User user=new User();
+        user.setId(1);
+        user.setName("陈新林");
+        String value = connection.sync().set("b", user.toString());//设置key对应的值为string类型的value,返回1表示成功，0失败
         System.out.println("values is " + value);
-        Boolean setnx = connection.sync().setnx("b", "b");//设置key对应的值为string类型的value,返回1表示成功，0失败，如果key已经存在，返回0 。nx 是not exist的意思
-        System.out.println(setnx);
+//        Boolean setnx = connection.sync().setnx("b", "b");//设置key对应的值为string类型的value,返回1表示成功，0失败，如果key已经存在，返回0 。nx 是not exist的意思
+//        System.out.println(setnx);
         String b = connection.sync().get("b");//获取key对应的string值,如果key不存在返回nil
         System.out.println(b);
 
-        List<KeyValue<String, String>> mget = connection.sync().mget("b", "c", "a");//一次获取多个key的值，如果对应key不存在，则对应返回nil。
-        for (KeyValue<String, String> list : mget) {
-            System.out.println(list);
-        }
-        Map map = new HashMap();
-        map.put("aa", "xx");
-        map.put("ba", "xx");
-        String mset = connection.sync().mset(map);//一次设置多个key的值，成功返回1表示所有的值都设置了，失败返回0表示没有任何值被设置
-        System.out.println(mset);
-        Long a = connection.sync().incr("a");//对key的值做加加操作,并返回新的值。注意incr一个不是int的value会返回错误，incr一个不存在的key，则设置key为1
+//        List<KeyValue<String, String>> mget = connection.sync().mget("b", "c", "a");//一次获取多个key的值，如果对应key不存在，则对应返回nil。
+//        for (KeyValue<String, String> list : mget) {
+//            System.out.println(list);
+//        }
+//        Map map = new HashMap();
+//        map.put("aa", "xx");
+//        map.put("ba", "xx");
+//        String mset = connection.sync().mset(map);//一次设置多个key的值，成功返回1表示所有的值都设置了，失败返回0表示没有任何值被设置
+//        System.out.println(mset);
+//        Long a = connection.sync().incr("a");//对key的值做加加操作,并返回新的值。注意incr一个不是int的value会返回错误，incr一个不存在的key，则设置key为1
 
-        System.out.println(a);
+//        System.out.println(a);
     }
 
     @Test
