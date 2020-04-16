@@ -27,9 +27,9 @@ import java.io.IOException;
 import static io.netty.handler.codec.http.HttpUtil.isKeepAlive;
 
 @Component
+@ChannelHandler.Sharable
 public class NioWebSocketHandler extends SimpleChannelInboundHandler<Object> {
     private static final Logger LOGGER = LoggerFactory.getLogger(NioWebSocketHandler.class);
-
     private WebSocketServerHandshaker handshake;
 
     private static String address;

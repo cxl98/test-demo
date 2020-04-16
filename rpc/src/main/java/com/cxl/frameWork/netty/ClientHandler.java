@@ -16,13 +16,13 @@ public class ClientHandler extends SimpleChannelInboundHandler {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        RpcRequest r = (RpcRequest) requests(HelloService.class);
+        RpcRequest r = (RpcRequest) requests();
         ctx.writeAndFlush(r);
     }
 
-    private Object requests(Class inface) {
+    private Object requests() {
         final RpcRequest rpcRequest = new RpcRequest();
-        Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), new Class[]{inface}, new InvocationHandler() {
+        Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), new Class[]{HelloService.class}, new InvocationHandler() {
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                 rpcRequest.setRequestId(UUID.randomUUID().toString());
                 rpcRequest.setMethodName(method.getName());

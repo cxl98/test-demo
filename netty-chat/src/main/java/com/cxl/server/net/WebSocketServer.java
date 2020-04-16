@@ -2,6 +2,7 @@ package com.cxl.server.net;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -13,7 +14,8 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 @Component
-public class WebSocketServer implements Runnable{
+@ChannelHandler.Sharable
+public class WebSocketServer implements Runnable {
     private static final Logger LOGGER = LoggerFactory.getLogger(WebSocketServer.class);
     private static int port;
 
@@ -21,6 +23,7 @@ public class WebSocketServer implements Runnable{
     public void setPort(int port) {
         this.port = port;
     }
+
 
     public void run() {
         LOGGER.info("init websocket 服务器");
@@ -42,7 +45,7 @@ public class WebSocketServer implements Runnable{
         }
     }
     @PostConstruct
-    public void main(){
+    public void main() {
         new Thread(new WebSocketServer()).start();
     }
 }
