@@ -1,0 +1,7 @@
+factory method :
+  就是template method　用来生成实例.  factory method ,父类决定生成实例的方式,但无法决定生成是哪个实例,具体的处理交给子类来负责,这样就可以让生成实例和实际负责生成实例的类　解耦
+
+  Product类：在该类中仅声明了use抽象方法.use方法的实现交给了Product的子类来实现。
+  Factory类：该类使用了template Method模式.在factory类还声明了用于“生产产品”的createProduct抽象方法和用于“注册产品”的registerProduct抽象方法.而他们的具体处理交给了他们的子类实现。“调用create方法生成product实例”.而create方法是先调用createProduct方法生成产品，再调用registerProduct注册产品。
+
+ 　最后就是Product的子类跟Factory的子类具体处理的流程了。
