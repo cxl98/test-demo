@@ -7,7 +7,6 @@ import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.stream.ChunkedWriteHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 @Component
 public class NioWebSocketChannelInitializer extends ChannelInitializer<SocketChannel> {
 
