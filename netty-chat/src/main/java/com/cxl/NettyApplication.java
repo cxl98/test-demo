@@ -6,18 +6,20 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
+@Configuration
 public class NettyApplication implements CommandLineRunner {
     public static void main(String[] args) {
         SpringApplication.run(NettyApplication.class);
     }
-
-    private static int port;
     @Value("${websocket.port}")
-    public void setPort(int port) {
-        this.port = port;
-    }
+    private  int port;
+
+//    public void setPort(int port) {
+//        this.port = port;
+//    }
 
     @Autowired
     private WebSocketServer webSocketServer;

@@ -20,7 +20,7 @@ import io.netty.util.CharsetUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -28,15 +28,13 @@ import java.io.IOException;
 import static io.netty.handler.codec.http.HttpUtil.isKeepAlive;
 
 @Component
+@Configuration
 public class NioWebSocketHandler extends SimpleChannelInboundHandler<Object> {
     private static final Logger LOGGER = LoggerFactory.getLogger(NioWebSocketHandler.class);
     private WebSocketServerHandshaker handshake;
-
-    private static String address;
     @Value("${webSocket.address}")
-    public  void setAddress(String address) {
-        this.address = address;
-    }
+    private  String address;
+
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Object o) throws Exception {
