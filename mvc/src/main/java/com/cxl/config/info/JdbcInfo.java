@@ -11,9 +11,9 @@ public class JdbcInfo {
     private String url;
     @Value("${mysql.username}")
     private String username;
-    @Value("mysql.password")
+    @Value("${mysql.password}")
     private String password;
-    @Value("mysql.driver")
+    @Value("${mysql.driver}")
     private String driver;
 
     public String getUrl() {

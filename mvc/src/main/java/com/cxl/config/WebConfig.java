@@ -16,7 +16,7 @@ import java.util.List;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.cxl")
+@ComponentScan(basePackages = "com.cxl.*")
 public class WebConfig implements WebMvcConfigurer {
 
     @Bean
