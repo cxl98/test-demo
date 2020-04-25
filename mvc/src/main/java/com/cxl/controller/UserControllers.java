@@ -14,7 +14,7 @@ public class UserControllers {
     @Autowired
     private UserServerImpls userServerImpls;
 
-    @RequestMapping(value = "login", method = RequestMethod.POST, produces = "application/json;charset=UTF_8")
+    @RequestMapping(value = "login", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public String login(User user) {
         user = userServerImpls.findUserByNameAndPassword(user.getUsername(), DigestUtils.md5Hex(user.getPassword()));

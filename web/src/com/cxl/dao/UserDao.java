@@ -18,7 +18,7 @@ public class UserDao {
     public User findUserById(String id) throws SQLException, IOException, ClassNotFoundException {
          user=new User();
         connection = MysqlConnectionUtil.getInstance().getConnection();
-        ps = connection.prepareStatement("SELECT * FROM t_user WHERE id=?");
+        ps = connection.prepareStatement("SELECT * FROM user WHERE id=?");
         ps.setString(1, id);
         rs = ps.executeQuery();
         if (null != rs && rs.next()) {
@@ -33,7 +33,7 @@ public class UserDao {
     public User findUserByName(String name) throws SQLException, IOException, ClassNotFoundException {
         user=new User();
         connection = MysqlConnectionUtil.getInstance().getConnection();
-        ps = connection.prepareStatement("SELECT * FROM t_user WHERE name=?");
+        ps = connection.prepareStatement("SELECT * FROM user WHERE name=?");
         ps.setString(1, name);
         rs = ps.executeQuery();
         if (null != rs && rs.next()) {

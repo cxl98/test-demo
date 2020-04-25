@@ -16,6 +16,7 @@
         <module name="netty-rpc" />
         <module name="redis" />
         <module name="rpc" />
+        <module name="spring" />
         <module name="test" />
         <module name="web" />
       </profile>
@@ -32,6 +33,7 @@
       <module name="netty-rpc" target="7" />
       <module name="redis" target="1.5" />
       <module name="rpc" target="1.5" />
+      <module name="spring" target="1.8" />
       <module name="test" target="8" />
       <module name="web" target="7" />
     </bytecodeTargetLevel>
