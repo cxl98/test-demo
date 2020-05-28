@@ -34,7 +34,6 @@ public class TestRedis {
 //        System.out.println(setnx);
         String b = connection.sync().get("b");//获取key对应的string值,如果key不存在返回nil
         System.out.println(b);
-
 //        List<KeyValue<String, String>> mget = connection.sync().mget("b", "c", "a");//一次获取多个key的值，如果对应key不存在，则对应返回nil。
 //        for (KeyValue<String, String> list : mget) {
 //            System.out.println(list);
