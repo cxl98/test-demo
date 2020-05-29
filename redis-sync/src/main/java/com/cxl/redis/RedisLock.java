@@ -26,24 +26,16 @@ public class RedisLock {
      * SET操作成功后,返回的是OK,失败返回NIL
      */
 
-    /**
-     * NX:只在键不存在的时候,才对键进行设置操作
-     */
-    private static final String NX = "NX";
-    /**
-     * EX seconds:设置键的过期时间为second秒
-     */
-    private static final String EX = "EX";
-    /**
-     * PX millisecounds:设置键的过期时间为millisecounds 毫秒
-     */
-    private static final String PX = "PX";
 
     /**
      * 调用set后的返回值
      */
-    public static final String OK = "OK";
+    private static final String OK = "OK";
 
+    /**
+     * 调用get后的返回值
+     */
+    private static final String NIL = "nil";
     /**
      * 默认请求锁的超时时间(ms 毫秒)
      */
@@ -92,14 +84,9 @@ public class RedisLock {
         this.timeout = timeout;
     }
 
-    public boolean lock() {
+    public void lock() {
         value = UUID.randomUUID().toString();
-
-        String set = set();
-        if (OK.equalsIgnoreCase(set)) {
-            locked = true;
-        }
-        return locked;
+        set();
     }
 
     private String set() {
@@ -115,8 +102,8 @@ public class RedisLock {
         long currentTimeMillis = System.currentTimeMillis();
         while ((System.currentTimeMillis() - currentTimeMillis) < timeout_) {
             String set = set();
-            if (OK.equalsIgnoreCase(set)){
-                locked=true;
+            if (OK.equalsIgnoreCase(set)) {
+                locked = true;
                 return true;
             }
             try {
@@ -129,19 +116,26 @@ public class RedisLock {
     }
 
     public boolean unlock() {
-        if (locked){
-//            connection.sync().get()
+        if (locked) {
+            String s = connection.sync().get(lockKey);
+            if (!NIL.equalsIgnoreCase(s)) {
+                destroy();
+                locked=false;
+                return true;
+            }
         }
         return locked;
     }
 
     public void destroy() {
-
+        if (null != lockKey) {
+            connection.sync().del(lockKey);
+        }
     }
 
     public static void main(String[] args) {
-        RedisLock redisLock=new RedisLock("xx");
-        boolean lock = redisLock.lock();
-        System.out.println(lock);
+        RedisLock redisLock = new RedisLock("xx");
+        redisLock.lock();
+
     }
 }
