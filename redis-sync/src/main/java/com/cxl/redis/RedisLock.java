@@ -43,7 +43,7 @@ public class RedisLock {
     /**
      * 默认锁的有效时间(s)
      */
-    public static final int EXPIRE = 100;
+    private static final int EXPIRE = 100;
     /**
      * 锁对应的key
      */
@@ -87,6 +87,10 @@ public class RedisLock {
     public void lock() {
         value = UUID.randomUUID().toString();
         set();
+    }
+
+    public void setLockKey(String lockKey) {
+        this.lockKey = lockKey;
     }
 
     private String set() {
@@ -136,6 +140,5 @@ public class RedisLock {
     public static void main(String[] args) {
         RedisLock redisLock = new RedisLock("xx");
         redisLock.lock();
-
     }
 }

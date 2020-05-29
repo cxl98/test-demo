@@ -5,11 +5,7 @@ public abstract class Factory {
     public static Factory getFactory(String className){
         try {
             factory= (Factory) Class.forName(className).newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return factory;
