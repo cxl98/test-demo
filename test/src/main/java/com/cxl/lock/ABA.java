@@ -1,4 +1,4 @@
-package com.cxl.arrayList;
+package com.cxl.lock;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
