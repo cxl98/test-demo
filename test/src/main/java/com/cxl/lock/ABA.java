@@ -1,12 +1,14 @@
 package com.cxl.lock;
 
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class ABA {
     public static void main(String[] args) {
         AtomicReference<Integer> atomicReference=new AtomicReference<>();
         atomicReference.set(100);
+        AtomicInteger atomicInteger=new AtomicInteger();
         new Thread(()->{
             atomicReference.compareAndSet(100,101);
             atomicReference.compareAndSet(101,100);

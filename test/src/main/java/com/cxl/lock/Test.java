@@ -16,6 +16,7 @@ class P implements Runnable {
         try {
             System.out.println("get");
             set();
+            System.out.println(Thread.currentThread().getName()+"  ");
         } finally {
             lock.unlock();
         }
@@ -26,6 +27,7 @@ class P implements Runnable {
         try {
             System.out.println("set");
         } finally {
+            lock.unlock();
         }
 
     }
@@ -34,7 +36,8 @@ class P implements Runnable {
 public class Test {
     public static void main(String[] args) {
         P p=new P();
-        new Thread(p,"xxx").start();
-        new Thread(p,"aaa").start();
+        for(int i = 0; i <10; i++) {
+          new Thread(p,String.valueOf(i)).start();
+        }
     }
 }
