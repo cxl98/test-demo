@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<title>地图API地理定位</title>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=fsQC1nNwVvOZ9CDqVLu0M3WsRvejkKwm"></script>
+
+</head>
+
+<body>
+<div id="container"></div>
+<div class="city">
+    <fieldset>
+        <div class="id">
+            <span>硬件ID:</span>&nbsp;<input type="text" class="txt-id">
+        </div>
+        <form action="#">
+
+            <br/>
+
+            <!--省份选择-->
+            <select id="prov" onchange="showCity(this)">
+                <option>=请选择省份=</option>
+
+            </select>
+
+            <!--城市选择-->
+            <select id="city" onchange="showCountry(this)">
+                <option>=请选择城市=</option>
+            </select>
+
+            <!--县区选择-->
+            <select id="country" onchange="selecCountry(this)">
+                <option>=请选择县区=</option>
+            </select>
+            <button type="button" class="btn met1" onClick="showAddr()" id="button-show">确定</button>
+            <br/>
+            <br/>
+            <label for="addr-show" class="sel">所在地:
+                <input type="text" value="" id="addr-show">
+            </label>
+        </form>
+        <div class="xxi">
+            <p>详细地址:</p>
+            <textarea name="" id="" cols="30" rows="10" class="xiangxi"></textarea>
+            <br>
+            <br>
+            <button type="button" class="btn btn-success go">发送</button>
+        </div>
+    </fieldset>
+
+</div>
+<script src="./js/city.js"></script>
+<script src="./js/method.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+
+    // 百度地图API功能
+    var map = new BMap.Map("container");
+    var point = new BMap.Point(119.1115713003065, 25.32365439756104);
+    map.centerAndZoom(point, 15);
+
+    var geolocation = new BMap.Geolocation();
+    geolocation.getCurrentPosition(function (r) {
+        if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+            var mk = new BMap.Marker(r.point);
+            map.addOverlay(mk);
+            map.panTo(r.point);
+            console.log('您的位置：' + r.point.lng + ',' + r.point.lat);
+            $('.go').on('click', function () {
+                // console.log($('.txt-id').val())
+                var txtId = $('.txt-id').val();
+                var xiangxi = $('.xiangxi').val()
+                if (/^[a-zA-Z0-9]{1,13}$/.test(txtId)) {
+                    // console.log('ok')
+                    if ($('.xiangxi').val().trim() == "") {
+                        alert('详细地址不能为空！');
+                    } else {
+                        // console.log(xiangxi)   详细地址
+                        // console.log(txtId)     id
+                        // console.log(r.point.lng)
+
+                        $.ajax({
+                            type: 'post',
+                            dataType: "json",
+                            url: 'api/map',
+                            contentType: 'application/json',
+                            data: JSON.stringify({
+                                "lng": r.point.lng,
+                                "lat": r.point.lat,
+                                id: txtId,
+                                detailed: xiangxi
+
+                            }),
+                            success: function (res) {
+                                console.log(JSON.stringify(res))
+                            },
+                            error: function (err) {
+                                console.log(err)
+                                console.log('请求失败！')
+                            }
+                        })
+                    }
+                } else {
+                    alert('请输入不包含汉字的硬件ID！');
+                    $('.txt-id').val('')
+                }
+            })
+        } else {
+            alert('failed' + this.getStatus());
+        }
+    }, {enableHighAccuracy: true})
+
+
+</script>
