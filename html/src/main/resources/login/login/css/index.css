@@ -1,0 +1,169 @@
+body {
+    min-width: 320px;
+    max-width: 750px !important;
+    /* flexibke.js给我们固定划分10等份 */
+    width: 10rem;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-family: Arial, Helvetica;
+    background: #f2f2f2;
+}
+
+/* 如果我们屏幕超过了 750px 那么我们就按750px 不会让页面超过750px*/
+
+
+@media screen and (min-width:750px) {
+    html {
+        font-size: 75px !important;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .chk {
+        overflow: hidden;
+    }
+}
+
+/* 这个插件默认的html文字大小为 16px  如何修改   在设置里面搜索cssroot修改*/
+.header {
+    width: 10rem;
+    height: 2.666667rem;
+    background-color: #4BADD0;
+    position: fixed;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.logo {
+    position: absolute;
+    width: 2.666667rem;
+    height: 2.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo a {
+    display: block;
+    overflow: hidden;
+    width: 2.666667rem;
+    height: 2.2rem;
+    background: url(../img/logo.png) no-repeat;
+    background-size: 100% 100%;
+    text-indent: -9999px;
+}
+
+.content {
+    width: 10rem;
+    height: 3.333333rem;
+    background-color: #fff;
+    position: relative;
+    top: 2.666667rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+.user {
+    position: absolute;
+    top: .666667rem;
+    left: 50%;
+    transform: translateX(-40%);
+    
+}
+.user input {
+    text-indent: 0.5em;
+    height: .333333rem;
+    width: 2.89999rem;
+}
+
+.user a {
+    text-decoration: none;
+    margin-left: .266667rem;
+}
+.user a span {
+    font-size: .213333rem;
+    color: #4BADD0;
+}
+
+.pwd {
+    position: absolute;
+    top: 1.333333rem;
+    left: 50%;
+    transform: translateX(-40%);
+}
+
+.pwd input {
+    text-indent: 0.5em;
+    height: .333333rem;
+    width: 2.89999rem;
+}
+
+.pwd a {
+    text-decoration: none;
+    margin-left: .266667rem;
+}
+
+.pwd a span {
+    font-size: .213333rem;
+    color: #4BADD0;
+}
+.chk {
+    position: absolute;
+    top: 1.933333rem;
+    left: 50%;
+    transform: translateX(-56%);
+    height: .433333rem;
+    width: 2.99999rem;
+    /* background-color: pink; */
+}
+
+.jizhu {
+    float: left;
+}
+
+.jizhu input{
+    width: .233333rem;
+    height: .233333rem;
+    position: relative;
+    top: .053333rem;
+}
+
+.jizhu span {
+    color: rgba(0, 0, 0, 0.473);
+    font-size: .16rem;
+}
+
+.zhidong {
+    float: right;
+}
+
+.zhidong input{
+    width: .233333rem;
+    height: .233333rem;
+    position: relative;
+    top: .053333rem;
+}
+
+.zhidong span {
+    color: rgba(0, 0, 0, 0.473);
+    font-size: .16rem;
+}
+
+.denglu {
+    position: absolute;
+    top: 2.433333rem;
+    left: 50%;
+    transform: translateX(-56%);
+    
+}
+.denglu button {
+    height: .433333rem;
+    width: 2.99999rem;
+    background-color: #ccc;
+    outline: none;
+    border: 3px solid #ccc;
+    cursor: pointer;
+    color: #f2f2f2;
+    font-size: .213333rem;
+}
