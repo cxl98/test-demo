@@ -29,6 +29,7 @@ import static io.netty.handler.codec.http.HttpUtil.isKeepAlive;
 
 @Component
 @Configuration
+@ChannelHandler.Sharable
 public class NioWebSocketHandler extends SimpleChannelInboundHandler<Object> {
     private static final Logger LOGGER = LoggerFactory.getLogger(NioWebSocketHandler.class);
     private WebSocketServerHandshaker handshake;

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=fsQC1nNwVvOZ9CDqVLu0M3WsRvejkKwm"></script>
+    <title>Title</title>
+</head>
+<body>
+<div id="map" style="width: 100%;height: 11rem;">
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    var pathParam=window.location.search;
+    var gps=decodeURI(pathParam.split("?gps=")[1]);
+    var data=gps.split(",");
+    var x=data[0];
+    var y=data[1];
+    document.onreadystatechange=loadingChange;
+    function loadingChange() {
+        var map=new BMap.Map("map");
+        var point=new BMap.Point(119.1115713003065,25.32365439756104);
+        map.centerAndZoom(point,12);
+        var mk=new BMap.Marker(point);
+        map.addOverlay(mk);
+        map.panTo(point);
+        console.log('您的位置: '+point.lng+','+point.lat);
+        var point=new BMap.Point(point.lng,point.lat);
+        var gc=new BMap.Geocoder();
+        gc.getLocation(point,function (rs) {
+            var addComp=rs.addressComponets;
+            console.log(rs.address)
+            map.addOverlay(mk);
+            var label=new BMap.Label(rs.address);
+            mk.setLabel(label);
+        });
+        map.enableDragging();
+        map.enableScrollWheelZoom(true);
+    }
+    setTimeout(function () {
+        loadingChange();
+    },1000);
+</script>
+</body>
+</html>

@@ -61,6 +61,6 @@ public class NtClient {
 
 
     public static void main(String[] args) throws InterruptedException {
-        new NtClient("localhost",8888).start();
+        new NtClient("localhost",9000).start();
     }
 }
