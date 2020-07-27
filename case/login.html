@@ -6,6 +6,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/index.css">
+    <script type="text/javascript" src="js/flexible.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
 </head>
 <body>
     <div class="header">
@@ -17,15 +20,15 @@
     </div>
     <div class="content">
         <div class="user">
-            <input type="text" placeholder="账号">
-            <a href="">
+            <input type="text" placeholder="账号" class="user_txt">
+            <a href="sign.html">
                 <span>
                     注册账号
                 </span>
             </a>
         </div>
         <div class="pwd">
-            <input type="password" placeholder="密码">
+            <input type="password" placeholder="密码" class="pwd_txt">
             <a href="">
                 <span>
                     找回密码
@@ -36,12 +39,15 @@
             <div class="jizhu">
                 <input type="checkbox" name="" > &nbsp;<span>记住密码</span>
             </div>
+            <div class="zhidong">
+                <input type="checkbox" name=""> &nbsp;<span>自动登录</span>
+            </div>
         </div>
         <div class="denglu">
             <button>登录</button>
         </div>
     </div>
-    <script src="js/flexible.js"></script>
+
 </body>
 
 </html>

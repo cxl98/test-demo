@@ -160,10 +160,24 @@ body {
 .denglu button {
     height: .433333rem;
     width: 2.99999rem;
-    background-color: #ccc;
+    background-color: #EBEEF3;
     outline: none;
-    border: 3px solid #ccc;
+    border: 1px solid #ccc;
     cursor: pointer;
-    color: #f2f2f2;
+    color: #fff;
     font-size: .213333rem;
+}
+
+.no {
+    background: url('../img/cha.png') no-repeat;
+    background-position: right;
+    width: .133333rem;
+    height: .133333rem;
+    border: 2px solid red;
+}
+.yes {
+    background: url('../img/gou.png') no-repeat;
+    background-position: right;
+    width: .133333rem;
+    height: .133333rem;
 }

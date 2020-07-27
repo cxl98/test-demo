@@ -35,15 +35,12 @@ public class NtClient {
                        .option(ChannelOption.TCP_NODELAY,true)
                        .handler(new ChannelInitializer<SocketChannel>() {
                            @Override
-                           protected void initChannel(SocketChannel ch) throws Exception {
+                           protected void initChannel(SocketChannel ch) {
                                ch.pipeline().addLast(new StringDecoder());
                                ch.pipeline().addLast(new StringEncoder());
                                ch.pipeline().addLast(new CliHandler());
                            }
                        });
-
-
-
                Channel channel=b.connect(host,port).sync().channel();
                BufferedReader input=new BufferedReader(new InputStreamReader(System.in));
 
@@ -61,6 +58,6 @@ public class NtClient {
 
 
     public static void main(String[] args) throws InterruptedException {
-        new NtClient("localhost",9000).start();
+        new NtClient("121.199.21.197",9000).start();
     }
 }
