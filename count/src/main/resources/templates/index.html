@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            position: relative;
+            width: 800px;
+            height: 800px;
+            margin: 80px auto;
+            background-color: pink;
+        }
+        ul {
+            list-style: none;
+        }
+        ul li {
+            margin-bottom: 8px;
+        }
+        .zong {
+            position: absolute;
+            top: 150px;
+            left: 50%;
+        }
+        .sum {
+            position: absolute;
+            left: 50%;
+            width: 100px;
+        }
+        .clear {
+            position: absolute;
+            width: 100px;
+            left: 70%;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="app">
+        <ul>
+            <li>
+                <span>型号</span>
+                <input type="text" class="model">
+            </li>
+            <li>
+                <span>米数</span>
+                <input type="text" class="meters">
+            </li>
+            <li>
+                <span>重量</span>
+                <input type="text" class="weight">
+            </li>
+            <li>
+                <span>单价</span>
+                <input type="text" class="malevolent">
+            </li>
+            <li>
+                <span>数量</span>
+                <input type="text" class="number">
+            </li>
+            <li>
+                <span>加工</span>
+                <input type="text" class="machining">
+            </li>
+            <li>
+                <span>材料</span>
+                <input type="text" class="data">
+            </li>
+            <li>
+                <span>运费</span>
+                <input type="text" class="freight">
+            </li>
+        </ul>
+        <div class="zong">
+            <ul>
+                <li>
+                    <span>总重量</span>
+                    <span>:</span><h5 class="zongWeight"></h5>
+                <li>
+                    <span>总 价&nbsp;&nbsp;</span>
+                    <span>:</span><h5 class="zongPrice"></h5>
+                </li>
+            </ul>
+        </div>
+        <button class="btn btn-primary sum">计算</button>
+        <button class="btn btn-info clear">清空</button>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    $(function () {
+        $('.clear').click(function () {
+            $('input').val('')
+            $('.zongWeight').text('')
+            $('.zongPrice').text('')
+            })
+        $('.sum').click(function () {
+            if($('input').val() === '') {
+                alert('请完整填写内容！')
+            }else {
+                $.ajax({
+                    type: 'post',
+                    url: '/api/count',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        model: $('.model').val(),
+                        meters: $('.meters').val(),
+                        weight: $('.meters').val(),
+                        malevolent: $('.malevolent').val(),
+                        number: $('.number').val(),
+                        machining: $('.machining').val(),
+                        data: $('.data').val(),
+                        freight: $('.freight').val(),
+                    }),
+                    dataType : 'json',
+                    success: function (res) {
+                        // 获取的值
+                        console.log(res)
+                        // 总重量表示
+                        // $('.zongWeight').val(值放进来)
+                        // 总价格表示
+                        // $('.zongPrice').val(值放进来)
+
+                    },
+                    error: function(err) {
+                        console.log(err);
+                        console.log('请求失败！');
+                    }
+                })
+            }
+        })
+    })
+</script>
+</html>

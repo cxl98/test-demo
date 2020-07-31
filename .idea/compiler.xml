@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="chat" />
         <module name="com-email" />
+        <module name="count" />
         <module name="demo" />
         <module name="druid" />
         <module name="hakaricp" />
@@ -28,10 +29,11 @@
     <bytecodeTargetLevel target="8">
       <module name="chat" target="1.5" />
       <module name="com-email" target="1.5" />
+      <module name="count" target="1.8" />
       <module name="demo" target="1.8" />
       <module name="druid" target="8" />
       <module name="hakaricp" target="8" />
-      <module name="html" target="1.8" />
+      <module name="html" target="1.5" />
       <module name="leetcode" target="7" />
       <module name="mvc" target="1.8" />
       <module name="netty-chat" target="8" />
