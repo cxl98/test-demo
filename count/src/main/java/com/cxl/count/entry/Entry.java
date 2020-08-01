@@ -7,11 +7,13 @@ import lombok.ToString;
 @ToString
 public class Entry {
     private String model;//型号
-    private int meters;//米数
-    private int weight;//重量
-    private int malevolent;//单价
+    private float meters;//米数
+    private float weight;//重量
+    private float malevolent;//单价
     private int number;//数量
     private int machining;//加工
     private int data;//材料
     private int freight;//运费
+    private float totalWeight;//总重量
+    private float totalPrice;//总价
 }

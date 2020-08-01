@@ -46,7 +46,8 @@ public class NtClient {
 
             while (true) {
 //                System.out.println("测试"+input.readLine());
-                channel.writeAndFlush(input.readLine() + "\n");
+                String string = XXX.convertStringToHex(input.readLine());
+                channel.writeAndFlush(string+ "\n");
             }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -58,6 +59,7 @@ public class NtClient {
 
 
     public static void main(String[] args) throws InterruptedException {
-        new NtClient("121.199.21.197",9000).start();
+//        new NtClient("121.199.21.197",9000).start();
+        new NtClient("127.0.0.1",9000).start();
     }
 }
