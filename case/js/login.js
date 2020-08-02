@@ -9,7 +9,6 @@ $(function () {
             alert('请输入正确的格式！(11-18位纯数字)');
         }
         else {
-            console.log('yes')
             $(this).removeClass('no')
             $(this).addClass('yes');
             userFlag = true;
@@ -24,7 +23,7 @@ $(function () {
             $(this).addClass('no');
             $(this).removeClass('yes');
             pwdFlag = false;
-            alert('请输入正确的格式！(4-16为由数字和字母组成)');
+            window.alert('请输入正确的格式！(4-16为由数字和字母组成)');
         }
         else {
             console.log('yes')
@@ -53,7 +52,7 @@ $(function () {
             console.log(val1);
         }
         else {
-            alert('请按照格式输入正确账户密码！')
+            window.alert('请按照格式输入正确账户密码！')
         }
     }
 });

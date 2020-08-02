@@ -33,7 +33,7 @@
       <module name="demo" target="1.8" />
       <module name="druid" target="8" />
       <module name="hakaricp" target="8" />
-      <module name="html" target="1.5" />
+      <module name="html" target="1.8" />
       <module name="leetcode" target="7" />
       <module name="mvc" target="1.8" />
       <module name="netty-chat" target="8" />

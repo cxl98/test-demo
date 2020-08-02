@@ -90,9 +90,9 @@ public class ImageUtil {
 
     public static void main(String[] args) {
         ImageUtil imageUtil = new ImageUtil();
-        File file = new File("/home/cxl/cxl/test-demo/test/src/main/resources/331077379.png");
+        File file = new File("/home/cxl/cxl/test-demo/case/img/logo.png");
         try {
-            imageUtil.zoomImage(file,"1111.png",400,400);
+            imageUtil.zoomImage(file,"1111.png",300,300);
         } catch (IOException e) {
             e.printStackTrace();
         }
