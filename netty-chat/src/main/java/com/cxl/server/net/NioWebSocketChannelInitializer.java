@@ -13,7 +13,7 @@ public class NioWebSocketChannelInitializer extends ChannelInitializer<SocketCha
     @Autowired
     private NioWebSocketHandler nioWebSocketHandler;
     @Override
-    protected void initChannel(SocketChannel channel) throws Exception {
+    protected void initChannel(SocketChannel channel) {
         channel.pipeline().addLast(new HttpServerCodec());
         channel.pipeline().addLast(new HttpObjectAggregator(65536));
         channel.pipeline().addLast(new ChunkedWriteHandler());

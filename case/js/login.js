@@ -39,9 +39,7 @@ $(function () {
     $('.denglu').click(function () {
         Login();
     });
-    function Login() {  
-        // console.log(pwdFlag); 
-        // console.log(userFlag)
+    function Login() {
         if (pwdFlag == true && userFlag == true) {
             // 获取user 和 pwd 值
             var val = $('.user_txt').val();

@@ -37,7 +37,7 @@ public class Main extends Application {
         });
         StackPane root = new StackPane();
         root.getChildren().addAll(view);
-        Scene scene = new Scene(root,450D,375D);
+        Scene scene = new Scene(root,450D,270D);
 
         primaryStage.setScene(scene);
         primaryStage.show();
