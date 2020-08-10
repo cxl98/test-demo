@@ -10,7 +10,7 @@ public class Robots {
         Robot robot;
         try {
             robot=new Robot();
-            KeyEvent
+//            KeyEvent
         } catch (AWTException e) {
             e.printStackTrace();
         }

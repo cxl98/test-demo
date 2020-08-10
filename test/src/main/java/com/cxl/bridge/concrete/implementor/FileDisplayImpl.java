@@ -1,4 +1,4 @@
-package com.cxl.bridge.concreteimplementor;
+package com.cxl.bridge.concrete.implementor;
 
 import com.cxl.bridge.implementor.DisplayImpl;
 

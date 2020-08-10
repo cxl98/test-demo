@@ -1,8 +1,8 @@
 package com.cxl.bridge;
 
 import com.cxl.bridge.abstraction.Display;
-import com.cxl.bridge.concreteimplementor.CharDisplayImpl;
-import com.cxl.bridge.concreteimplementor.FileDisplayImpl;
+import com.cxl.bridge.concrete.implementor.CharDisplayImpl;
+import com.cxl.bridge.concrete.implementor.FileDisplayImpl;
 import com.cxl.bridge.implementor.DisplayImpl;
 import com.cxl.bridge.refinedabstract.CountDisplay;
 import com.cxl.bridge.refinedabstract.IncreaseDisplay;
