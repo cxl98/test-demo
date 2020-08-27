@@ -36,8 +36,7 @@ public class UserController {
     @RequestMapping("/getOnlineUser")
     @ResponseBody
     public List<User> getOnlineUser() {
-        for (User user:
-                UserOption.getUsers()) {
+        for (User user: UserOption.getUsers()) {
             System.out.println(user);
         }
         return UserOption.getUsers();

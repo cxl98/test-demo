@@ -59,7 +59,7 @@ public class NtClient {
 
 
     public static void main(String[] args) throws InterruptedException {
-        new NtClient("121.199.21.197",9000).start();
-//        new NtClient("127.0.0.1",9000).start();
+//        new NtClient("121.199.21.197",9000).start();
+        new NtClient("127.0.0.1",8888).start();
     }
 }
