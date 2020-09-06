@@ -22,6 +22,7 @@ public class CommandListNode implements Node{
 
     @Override
     public String toString() {
+
         return "CommandListNode{" +
                 "list=" + list.toString() +
                 '}';
