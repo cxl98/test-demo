@@ -22,3 +22,9 @@ git config --global -l
 git config --global --unset http.proxy
 
 git config --global --unset https.proxy
+
+
+#gitignoe 不起作用
+git rm -rf xxx;
+git commit -m "delete .idea";
+git push;
