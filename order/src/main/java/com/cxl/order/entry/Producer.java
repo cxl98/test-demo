@@ -13,5 +13,4 @@ public class Producer implements Serializable {
     private Long id;
     private String producerName;
     private String introduce;
-
 }
