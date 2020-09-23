@@ -17,10 +17,10 @@ public class UserService {
         return 0;
     }
 
-    public User SelectByUsername(String username){
+    public User selectByUsername(String username,String password){
         User user = null;
         if (null!=username){
-            user=userDao.selectByUsername(username);
+            user=userDao.selectByUsername(username,password);
         }
         return user;
     }

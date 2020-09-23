@@ -21,4 +21,14 @@ public class UserController {
         }
         return 0;
     }
+
+    @RequestMapping(value = "login", method = RequestMethod.POST)
+    @ResponseBody
+    public String login(String username,String password) {
+        User user = userService.selectByUsername(username,password);
+        if (null!=user){
+            return "登陆成功";
+        }
+        return "没有该用户";
+    }
 }

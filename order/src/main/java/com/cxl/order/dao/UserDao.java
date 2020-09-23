@@ -13,6 +13,6 @@ public interface UserDao {
     int insertUser(User user);
     @Update("update User set password=#{password} where username=#{username}")
     int updateUser(String password, String username);
-    @Select("select * from User where username=#{username}")
-    User selectByUsername(String username);
+    @Select("select * from User where username=#{username} and password=#{password}")
+    User selectByUsername(String username,String password);
 }
