@@ -24,7 +24,7 @@ public class TestUser {
 
     @Test
     public void testSelectByUser(){
-        User user = userService.SelectByUsername("cxl");
+        User user = userService.selectByUsername("cxl","123456");
         System.out.println(user);
     }
 }
