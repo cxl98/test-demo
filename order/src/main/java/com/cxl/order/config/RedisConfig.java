@@ -52,4 +52,9 @@ public class RedisConfig {
         RedisCacheConfiguration redisCacheConfiguration=RedisCacheConfiguration.defaultCacheConfig().serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(redisSerializer())).entryTtl(Duration.ofDays(1));
         return new RedisCacheManager(redisCacheWriter,redisCacheConfiguration);
     }
+
+    @Bean
+    public RedisService redisService(){
+        return new RedisServiceImpl();
+    }
 }
