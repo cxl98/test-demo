@@ -5,13 +5,13 @@ from pynput.keyboard import Controller,Key,Listener
 
 def on_press(key):
     try:
-        print(format(key.char))
+        print("正在按压:",format(key.char))
     except AttributeError:
-        print(format(key))
+        print("正在按压:",format(key))
 
 
 def on_release(key):
-    # print(format(key))
+    print("已经释放:",format(key))
 
     if key==Key.esc:
        
