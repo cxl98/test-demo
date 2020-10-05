@@ -1,5 +1,8 @@
 package com.cxl.server;
 
+import com.cxl.codec.NettyDecoder;
+import com.cxl.codec.NettyEncoder;
+import com.cxl.codec.Serializer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -35,8 +38,8 @@ public class NtServer {
                       .childHandler(new ChannelInitializer<SocketChannel>() {
                           @Override
                           protected void initChannel(SocketChannel channel) throws Exception {
-                              channel.pipeline().addLast(new StringDecoder());
-                              channel.pipeline().addLast(new StringEncoder());
+                              channel.pipeline().addLast(new NettyDecoder(Object.class, Serializer.SerializerEnum.PROTOSTUFF.getSerializer()));
+                              channel.pipeline().addLast(new NettyEncoder(Object.class, Serializer.SerializerEnum.PROTOSTUFF.getSerializer()));
                               channel.pipeline().addLast(new SerHander());
                           }
                       });
