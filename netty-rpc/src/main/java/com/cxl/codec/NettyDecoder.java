@@ -4,6 +4,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
 
+import java.nio.charset.Charset;
 import java.util.List;
 
 public class NettyDecoder extends ByteToMessageDecoder {
@@ -17,6 +18,7 @@ public class NettyDecoder extends ByteToMessageDecoder {
 
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
+        System.out.println("xxxx"+in.toString(Charset.defaultCharset()));
         if (in.readableBytes()<4){
             return ;
         }
@@ -31,11 +33,12 @@ public class NettyDecoder extends ByteToMessageDecoder {
         }
         byte [] data=new byte[dataLength];
 
-//        System.out.println(dataLength);
+        System.out.println(dataLength);
         in.readBytes(data);
-//        System.out.println(data);
+        System.out.println(data);
 
         Object obj=serializer.deserializer(data,genericClass);
+        System.out.println(obj);
         out.add(obj);
     }
 }

@@ -17,6 +17,7 @@ public class NettyEncoder extends MessageToByteEncoder<Object> {
     protected void encode(ChannelHandlerContext ctx, Object msg, ByteBuf out) throws Exception {
         if (genericClass.isInstance(msg)){
             byte[] data=serializer.serializer(msg);
+            System.out.println("yyy"+data);
             out.writeInt(data.length);
             out.writeBytes(data);
         }
