@@ -1,20 +1,17 @@
 package com.cxl.test;
 
 import com.cxl.order.OrderApplication;
-import com.cxl.order.config.RedisService;
+import com.cxl.order.util.RedisService;
 import com.cxl.order.entry.User;
 import com.cxl.order.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = OrderApplication.class)
 public class TestUser {
-    private static final Logger LOGGER= LoggerFactory.getLogger(TestUser.class);
     @Autowired
     private UserService userService;
     @Autowired

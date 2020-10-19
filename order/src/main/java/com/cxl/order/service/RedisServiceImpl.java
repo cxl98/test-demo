@@ -1,5 +1,6 @@
-package com.cxl.order.config;
+package com.cxl.order.service;
 
+import com.cxl.order.util.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 

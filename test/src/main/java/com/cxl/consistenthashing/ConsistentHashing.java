@@ -1,14 +1,12 @@
 package com.cxl.consistenthashing;
 
-import org.apache.poi.ss.formula.functions.T;
-
 import java.util.*;
 
 public class ConsistentHashing {
     //物理节点
     private Set<String> pNodes = new TreeSet<>();
     // 虚拟节点的复制倍数
-    private final int COPY_VALUES =1048576;
+    private final int COPY_VALUES =1000000;
     //虚拟节点　 哈希值 => 物理节点
     private TreeMap<Long, String> vNodes = new TreeMap<>();
 
@@ -93,6 +91,7 @@ public class ConsistentHashing {
 
     public static void main(String[] args) {
         ConsistentHashing ch=new ConsistentHashing();
+        long l = System.currentTimeMillis();
         System.out.println("默认情况");
         ch.dumpDataNodeMap(0,65535);
         System.out.println("================");
@@ -101,6 +100,7 @@ public class ConsistentHashing {
         System.out.println("--------------");
         ch.addPNodes("192.168.56.14");
         ch.dumpDataNodeMap(0,65535);
-
+        long l1 = System.currentTimeMillis();
+        System.out.println(l1-l);
     }
 }

@@ -1,5 +1,7 @@
 package com.cxl.order.config;
 
+import com.cxl.order.service.RedisServiceImpl;
+import com.cxl.order.util.RedisService;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,6 +24,7 @@ import java.time.Duration;
 @Configuration
 @EnableCaching
 public class RedisConfig {
+
     @Bean
     public RedisTemplate<String,Object> redisTemplate(RedisConnectionFactory redisConnectionFactory){
         RedisSerializer<Object> serializer=redisSerializer();
@@ -45,6 +48,7 @@ public class RedisConfig {
         serializer.setObjectMapper(objectMapper);
         return serializer;
     }
+
     @Bean
     public RedisCacheManager redisCacheManager(RedisConnectionFactory redisConnectionFactory){
         RedisCacheWriter redisCacheWriter=RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory);
