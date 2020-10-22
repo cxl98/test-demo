@@ -15,11 +15,11 @@ public class UserController {
 
     @RequestMapping(value = "registry", method = RequestMethod.POST)
     @ResponseBody
-    public int registry(User user) {
+    public boolean registry(User user) {
         if (null != user.getUsername() && null != user.getPassword()) {
             return userService.insertUser(user);
         }
-        return 0;
+        return false;
     }
 
     @RequestMapping(value = "login", method = RequestMethod.POST)

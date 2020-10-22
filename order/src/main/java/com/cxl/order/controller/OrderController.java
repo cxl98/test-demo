@@ -1,5 +1,6 @@
 package com.cxl.order.controller;
 
+import com.cxl.order.annotation.Log;
 import com.cxl.order.entry.Order;
 import com.cxl.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class OrderController {
 
     @RequestMapping(value = "addOrder",method = RequestMethod.POST)
     @ResponseBody
-    public String addOrder(Order order){
+    public String addOrder(Order order) throws Exception {
         int i = orderService.addOrder(order);
         if (1!=i){
             return "订单成功";
@@ -25,6 +26,7 @@ public class OrderController {
 
     @RequestMapping(value = "showOrder",method = RequestMethod.POST)
     @ResponseBody
+    @Log(operation = "showOrder",type = "dev")
     public Order showOrder(String username){
         return orderService.showOrder(username);
     }
