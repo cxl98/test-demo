@@ -5,6 +5,7 @@ import com.cxl.order.entry.Order;
 import com.cxl.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,7 +17,7 @@ public class OrderController {
 
     @RequestMapping(value = "addOrder",method = RequestMethod.POST)
     @ResponseBody
-    public String addOrder(Order order) throws Exception {
+    public String addOrder(@RequestBody Order order) throws Exception {
         int i = orderService.addOrder(order);
         if (1!=i){
             return "订单成功";
