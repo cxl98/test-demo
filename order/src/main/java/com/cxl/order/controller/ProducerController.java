@@ -15,8 +15,8 @@ public class ProducerController {
 
     @PostMapping(value = "addProducer",produces="application/json")
     @ResponseBody
-    @Log(operation = "login_api",type = "test")
     @Transactional
+    @Log(operation = "login_api",type = "test")
     public int addProducer(@RequestBody Producer producer){
         if (null!=producer){
             return producerService.addProducer(producer);

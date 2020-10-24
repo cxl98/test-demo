@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LogDao {
 
-    @Insert("insert into Log(id,logOp,logType,userId,createTime,url) values(#{id},#{logOp},#{logType},#{userId},#{createTime},#{url})")
+    @Insert("insert into log(id,logOp,logType,userId,createTime,url) values(#{id},#{logOp},#{logType},#{userId},#{createTime},#{url})")
     public int insertLog(Log log);
 }
