@@ -1,8 +1,10 @@
 package com.cxl.order.util;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public interface RedisService {
+     boolean set(String key, Object value, long time, TimeUnit timeout);
     /**
      *redis set
      * @param key key
@@ -25,6 +27,7 @@ public interface RedisService {
      */
     Object get(String key);
 
+    Object get(String key,String hashKey);
     /**
      *
      * @param key
@@ -68,5 +71,7 @@ public interface RedisService {
      * @return
      */
     Long incr(String key,long da);
+
+    Long decr(String key, String hashKey, long delta);
 
 }
