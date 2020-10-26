@@ -12,8 +12,13 @@ public class RedisServiceImpl implements RedisService {
     private RedisTemplate<String, Object> redisTemplate;
 
     @Override
+    public boolean set(String key, Object value, long time,TimeUnit timeout) {
+       return redisTemplate.opsForValue().setIfAbsent(key, value,time, timeout);
+    }
+
+    @Override
     public void set(String key, Object value, long timeout) {
-        redisTemplate.opsForValue().set(key, value, timeout);
+        redisTemplate.opsForValue().set(key,value,timeout);
     }
 
     @Override
@@ -24,6 +29,11 @@ public class RedisServiceImpl implements RedisService {
     @Override
     public Object get(String key) {
         return redisTemplate.opsForValue().get(key);
+    }
+
+    @Override
+    public Object get(String key, String hashKey) {
+        return redisTemplate.opsForHash().get(key,hashKey);
     }
 
     @Override
@@ -54,5 +64,10 @@ public class RedisServiceImpl implements RedisService {
     @Override
     public Long incr(String key, long da) {
         return redisTemplate.opsForValue().increment(key, da);
+    }
+
+    @Override
+    public Long decr(String key, String hashKey, long delta) {
+       return redisTemplate.opsForHash().increment(key,hashKey,delta);
     }
 }
