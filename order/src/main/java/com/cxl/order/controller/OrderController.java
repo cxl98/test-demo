@@ -4,23 +4,24 @@ import com.cxl.order.annotation.Log;
 import com.cxl.order.dao.ProducerDao;
 import com.cxl.order.entry.Order;
 import com.cxl.order.service.OrderService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
+@Api(tags = "订单模块")
 public class OrderController {
     private final static Logger LOGGER= LoggerFactory.getLogger(OrderController.class);
     @Autowired
     private OrderService orderService;
-
-    @RequestMapping(value = "addOrder",method = RequestMethod.POST)
-    @ResponseBody
+    @ApiOperation(value = "添加订单")
+    @ApiImplicitParam()
+    @PostMapping(value = "addOrder")
     public String addOrder(@RequestBody Order order) throws Exception {
         int i = orderService.addOrder(order);
         if (1!=i){
