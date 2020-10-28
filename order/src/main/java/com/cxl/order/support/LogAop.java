@@ -20,6 +20,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
+import java.util.Date;
 
 @Component
 @Aspect
@@ -56,9 +57,9 @@ public class LogAop {
             if (user == null) {
                 return null;
             }
-            log.setUserId(user.getId());
+            log.setUserId(user.getUsername());
             log.setUrl(httpServletRequest.getRequestURI());
-            log.setCreateTime(System.currentTimeMillis());
+            log.setCreateTime(new Date());
 
             logService.insertLog(log);
         }

@@ -18,6 +18,8 @@ public class Order implements Serializable {
     private String username;//用户账号
     private BigDecimal totalAmount;//订单总额
     private BigDecimal payAmount;//应付金额
+    private Long pName;//商品名
+    private int number;//购买数量
     private Integer status;//订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单
 
 }

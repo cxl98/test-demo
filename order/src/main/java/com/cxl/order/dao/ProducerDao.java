@@ -12,12 +12,13 @@ public interface ProducerDao {
     @Insert("insert into producer(id,producerName,introduce,repertory) values(#{id},#{producerName},#{introduce},#{repertory})")
     int insertProducer(Producer producer);
 
-    @Select("select producer.id,producer.repertory from producer where id=#{id}")
-    @MapKey("id")
+    @Select("select producer.id,producer.repertory from producer")
+    List<Producer> allRepertory();
 
-    List<Map<Integer,Producer>> allRepertory();
+    @Update("update producer set repertory=#{repertory} where id=#{id}")
+    int updateRepertory(long id);
 
-    @Update("update producer set repertory=#{repertory}")
-    int updateRepertory(long repertory);
+    @Select("select repertory from producer where id=#{id}")
+    int getRepertoryById(long id);
 
 }
