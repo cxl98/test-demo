@@ -22,7 +22,7 @@
      
    **注：该例子为非公平锁，获得锁的先后顺序，不会按照进入lock的先后顺序进行。**
      2、自旋锁的其他种类
-     上篇我们讲到了自旋锁，在自旋锁中 另有三种常见的锁形式:TicketLock ，CLHlock 和MCSlock
+     在自旋锁中 另有三种常见的锁形式:TicketLock ，CLHlock 和MCSlock
      Ticket锁主要解决的是访问顺序的问题，主要的问题是在多核cpu上
      package com.alipay.titan.dcc.dal.entity;
      import java.util.concurrent.atomic.AtomicInteger;
@@ -74,7 +74,6 @@
    }
      CLHlock是不停的查询前驱变量， 导致不适合在NUMA 架构下使用（在这种结构下，每个线程分布在不同的物理内存区域）
      MCSLock则是对本地变量的节点进行循环。不存在CLHlock 的问题。
-     01
      import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
      public class MCSLock {
          public static class MCSNode {
