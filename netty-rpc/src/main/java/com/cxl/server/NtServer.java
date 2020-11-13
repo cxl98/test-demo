@@ -1,8 +1,5 @@
 package com.cxl.server;
 
-import com.cxl.codec.NettyDecoder;
-import com.cxl.codec.NettyEncoder;
-import com.cxl.codec.Serializer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -11,9 +8,6 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.serialization.ClassResolvers;
-import io.netty.handler.codec.serialization.ObjectDecoder;
-import io.netty.handler.codec.serialization.ObjectEncoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 
@@ -38,8 +32,8 @@ public class NtServer {
                       .childHandler(new ChannelInitializer<SocketChannel>() {
                           @Override
                           protected void initChannel(SocketChannel channel) throws Exception {
-                              channel.pipeline().addLast(new NettyDecoder(Object.class, Serializer.SerializerEnum.PROTOSTUFF.getSerializer()));
-                              channel.pipeline().addLast(new NettyEncoder(Object.class, Serializer.SerializerEnum.PROTOSTUFF.getSerializer()));
+                              channel.pipeline().addLast(new StringDecoder());
+                              channel.pipeline().addLast(new StringEncoder());
                               channel.pipeline().addLast(new SerHander());
                           }
                       });
@@ -58,6 +52,6 @@ public class NtServer {
     }
 
     public static void main(String[] args) {
-        new NtServer(8888).start();
+        new NtServer(9000).start();
     }
 }

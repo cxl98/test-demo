@@ -10,7 +10,7 @@ import java.io.PrintStream;
 import java.net.Socket;
 
 public class Client {
-    private static final int SERVER_PORT = 9999;
+    private static final int SERVER_PORT = 9000;
     private String address = "127.0.0.1";
     private Socket socket;
     private PrintStream printStream;

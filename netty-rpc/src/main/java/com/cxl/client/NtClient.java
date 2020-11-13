@@ -1,8 +1,5 @@
 package com.cxl.client;
 
-import com.cxl.codec.NettyDecoder;
-import com.cxl.codec.NettyEncoder;
-import com.cxl.codec.Serializer;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
@@ -11,9 +8,8 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.serialization.ClassResolvers;
-import io.netty.handler.codec.serialization.ObjectDecoder;
-import io.netty.handler.codec.serialization.ObjectEncoder;
+import io.netty.handler.codec.bytes.ByteArrayDecoder;
+import io.netty.handler.codec.bytes.ByteArrayEncoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 
@@ -39,8 +35,8 @@ public class NtClient {
                        .handler(new ChannelInitializer<SocketChannel>() {
                            @Override
                            protected void initChannel(SocketChannel ch) {
-                               ch.pipeline().addLast(new NettyDecoder(Object.class, Serializer.SerializerEnum.PROTOSTUFF.getSerializer()));
-                               ch.pipeline().addLast(new NettyEncoder(Object.class, Serializer.SerializerEnum.PROTOSTUFF.getSerializer()));
+                               ch.pipeline().addLast(new StringEncoder());
+                               ch.pipeline().addLast(new StringDecoder());
                                ch.pipeline().addLast(new CliHandler());
                            }
                        });
@@ -48,9 +44,8 @@ public class NtClient {
                BufferedReader input=new BufferedReader(new InputStreamReader(System.in));
 
             while (true) {
-//                System.out.println("测试"+input.readLine());
-                String string = XXX.convertStringToHex(input.readLine());
-                channel.writeAndFlush(string+ "\n");
+                String s = input.readLine();
+                channel.writeAndFlush(s+ "\r\n");
             }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -63,6 +58,6 @@ public class NtClient {
 
     public static void main(String[] args) throws InterruptedException {
 //        new NtClient("121.199.21.197",9000).start();
-        new NtClient("127.0.0.1",8888).start();
+        new NtClient("127.0.0.1",9000).start();
     }
 }

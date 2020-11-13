@@ -55,16 +55,17 @@ public class SerHander extends SimpleChannelInboundHandler<String> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-        Channel inConfig=ctx.channel();
-        System.out.println("SerHandler的handlerRead0111"+msg+"\n");
-        for (Channel channel: channels){
-            System.out.println("SerHandler的handlerRead0222"+msg+"\n");
-            if (channel!=inConfig){
-                channel.writeAndFlush("用户:"+inConfig.remoteAddress()+"说"+msg+"\n");
-            }else{
-                channel.writeAndFlush("我说:"+msg+"\n");
-            }
-        }
+//        Channel inConfig=ctx.channel();
+//        System.out.println("SerHandler的handlerRead0111"+msg+"\n");
+//        for (Channel channel: channels){
+//            System.out.println("SerHandler的handlerRead0222"+msg+"\n");
+//            if (channel!=inConfig){
+//                channel.writeAndFlush("用户:"+inConfig.remoteAddress()+"说"+msg+"\n");
+//            }else{
+//                channel.writeAndFlush("我说:"+msg+"\n");
+//            }
+//        }
+        System.out.println(msg);
     }
 
 }
