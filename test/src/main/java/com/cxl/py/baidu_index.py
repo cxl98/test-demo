@@ -1,5 +1,4 @@
 from urllib.parse import urlencode
-
 from baidu_config import *
 from baidu_utils import *
 
