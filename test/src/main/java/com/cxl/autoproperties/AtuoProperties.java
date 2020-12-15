@@ -16,7 +16,7 @@ public class AtuoProperties implements Runnable {
     private Map<String, Long> configFileModifyData = new HashMap<>();
     private static Map<String, String> SYSTEM_CONFIG = new ConcurrentHashMap<>();
 
-    public static Map<String, String> getSystemConfig() {
+    public  Map<String, String> getSystemConfig() {
         return SYSTEM_CONFIG;
     }
 
