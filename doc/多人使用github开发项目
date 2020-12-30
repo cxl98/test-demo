@@ -1,19 +1,19 @@
 1.项目组长创建一个空的项目，各个组员fork一份
 2.组员写完的代码push到自己的代码仓库，要给组长发一个pull request，等待组长合并项目
 3.组长写的代码push到代码库，组员要更新组长的代码的操作如下
-1. git remote add upstream git@github.com:xxx/xxx.git   //本地添加远程主分支，叫upstream。可以先git branch -v查看是否已添加远程分支，若已添加，该步骤略过。
+1. git remote add upstream git@github.com:xxx/xxx.git   //本地添加远程主分支，叫upstream。可以先git branch -v查看是否已添加远程分支，若已添加，该步骤略过。
 
-2. git fetch 远程别名  // 获取主分支的最新修改到本地；
+2. git fetch 远程别名  // 获取主分支的最新修改到本地；
 
-3. git merge 远程别名/master  // 将远程别名分支修改内容merge到本地个人分支；
+3. git merge 远程别名/master  // 将远程别名分支修改内容merge到本地个人分支；
 
-    // 该步骤或者可以分成2步：
+    // 该步骤或者可以分成2步：
 
-    1） # git checkout master；  // checkout到master分支
+    1） # git checkout master；  // checkout到master分支
 
-    2） # git merge 远程别名；  //合并主分支修改到本地master分支；
+    2） # git merge 远程别名；  //合并主分支修改到本地master分支；
 
-4. git push                                // 将本地修改提交到github上的个人分支
+4. git push                                // 将本地修改提交到github上的个人分支
 
 #git 查看全局配置
 git config --global -l
