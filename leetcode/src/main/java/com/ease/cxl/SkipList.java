@@ -66,7 +66,7 @@ public class SkipList {
             levelCount = level;
         }
     }
-
+    //删除节点
     public void delete(int value) {
         Node[] update = new Node[levelCount];
         Node p = new Node();
