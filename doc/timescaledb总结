@@ -1,0 +1,4 @@
+1. git clone https://gitee.com/mirrors/TimescaleDB.git 使用gitee的原因是github太慢了
+2.下载 postgresql https://www.postgresql.org/download/
+3.cd ./build && make
+4.使用clion打开之前要配置cmake 参数 -DUSE_OPENSSL=0 -DREGRESS_CHECKS=OFF
