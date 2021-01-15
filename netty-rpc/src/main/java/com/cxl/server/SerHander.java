@@ -1,11 +1,16 @@
 package com.cxl.server;
 
+import io.netty.buffer.ByteBufUtil;
 import io.netty.channel.*;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
+import io.netty.handler.codec.http.FullHttpRequest;
+import io.netty.handler.codec.http.FullHttpResponse;
 import io.netty.util.concurrent.GlobalEventExecutor;
 
-public class SerHander extends SimpleChannelInboundHandler<String> {
+import java.nio.charset.StandardCharsets;
+
+public class SerHander extends SimpleChannelInboundHandler<FullHttpRequest> {
     public static ChannelGroup channels=new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
     @Override
@@ -53,19 +58,26 @@ public class SerHander extends SimpleChannelInboundHandler<String> {
         ctx.close();
     }
 
-    @Override
-    protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-//        Channel inConfig=ctx.channel();
-//        System.out.println("SerHandler的handlerRead0111"+msg+"\n");
-//        for (Channel channel: channels){
-//            System.out.println("SerHandler的handlerRead0222"+msg+"\n");
-//            if (channel!=inConfig){
-//                channel.writeAndFlush("用户:"+inConfig.remoteAddress()+"说"+msg+"\n");
-//            }else{
-//                channel.writeAndFlush("我说:"+msg+"\n");
-//            }
-//        }
-        System.out.println(msg);
-    }
+//    @Override
+//    protected void channelRead0(ChannelHandlerContext ctx, byte[] data) throws Exception {
+////        Channel inConfig=ctx.channel();
+////        System.out.println("SerHandler的handlerRead0111"+msg+"\n");
+////        for (Channel channel: channels){
+////            System.out.println("SerHandler的handlerRead0222"+msg+"\n");
+////            if (channel!=inConfig){
+////                channel.writeAndFlush("用户:"+inConfig.remoteAddress()+"说"+msg+"\n");
+////            }else{
+////                channel.writeAndFlush("我说:"+msg+"\n");
+////            }
+////        }
+//
+//        System.out.println(data);
+//    }
 
+
+    @Override
+    protected void channelRead0(ChannelHandlerContext channelHandlerContext, FullHttpRequest fullHttpRequest) throws Exception {
+        byte[] bytes = ByteBufUtil.getBytes(fullHttpRequest.content());
+        System.out.println(new String(bytes, StandardCharsets.UTF_8));
+    }
 }

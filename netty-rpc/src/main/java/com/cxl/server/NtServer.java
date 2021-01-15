@@ -8,8 +8,11 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.http.HttpObjectAggregator;
+import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import io.netty.handler.stream.ChunkedWriteHandler;
 
 public class NtServer {
     private  int port;
@@ -26,14 +29,15 @@ public class NtServer {
 
              bootstrap.group(boss,work)
                       .channel(NioServerSocketChannel.class)
-                      .option(ChannelOption.SO_BACKLOG,1024)
+//                      .option(ChannelOption.SO_BACKLOG,1024)
                       .option(ChannelOption.SO_KEEPALIVE,true)
-                      .option(ChannelOption.TCP_NODELAY,true)
+//                      .option(ChannelOption.TCP_NODELAY,true)
                       .childHandler(new ChannelInitializer<SocketChannel>() {
                           @Override
                           protected void initChannel(SocketChannel channel) throws Exception {
-                              channel.pipeline().addLast(new StringDecoder());
-                              channel.pipeline().addLast(new StringEncoder());
+                              channel.pipeline().addLast(new HttpServerCodec());
+                              channel.pipeline().addLast(new HttpObjectAggregator(65535));
+//                              channel.pipeline().addLast(new ChunkedWriteHandler());
                               channel.pipeline().addLast(new SerHander());
                           }
                       });
