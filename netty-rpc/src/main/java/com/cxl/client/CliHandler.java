@@ -7,15 +7,20 @@ import io.netty.handler.codec.http.FullHttpResponse;
 
 import java.nio.charset.StandardCharsets;
 
-public class CliHandler extends SimpleChannelInboundHandler<FullHttpResponse> {
+public class CliHandler extends SimpleChannelInboundHandler<Object> {
 //    @Override
 //    protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
 //        System.out.println(msg);
 //    }
 
+//    @Override
+//    protected void channelRead0(ChannelHandlerContext channelHandlerContext, FullHttpResponse fullHttpResponse) throws Exception {
+//        byte[] bytes = ByteBufUtil.getBytes(fullHttpResponse.content());
+//        System.out.println(new String(bytes, StandardCharsets.UTF_8));
+//    }
+
     @Override
-    protected void channelRead0(ChannelHandlerContext channelHandlerContext, FullHttpResponse fullHttpResponse) throws Exception {
-        byte[] bytes = ByteBufUtil.getBytes(fullHttpResponse.content());
-        System.out.println(new String(bytes, StandardCharsets.UTF_8));
+    protected void channelRead0(ChannelHandlerContext channelHandlerContext, Object o) throws Exception {
+
     }
 }
