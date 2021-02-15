@@ -1,12 +1,15 @@
 package com.cxl.consistenthashing;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 public class ConsistentHashing {
     //物理节点
     private Set<String> pNodes = new TreeSet<>();
     // 虚拟节点的复制倍数
-    private final int COPY_VALUES =1000000;
+    private final int COPY_VALUES =16;
     //虚拟节点　 哈希值 => 物理节点
     private TreeMap<Long, String> vNodes = new TreeMap<>();
 
@@ -41,7 +44,26 @@ public class ConsistentHashing {
         }
         return hash;
     }
+    private long hash(String key){
 
+        //md5 byte
+        MessageDigest md5;
+
+        try {
+            md5=MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("MD5 not supported",e);
+        }
+        md5.reset();
+        byte[] keyBytes;
+        keyBytes=key.getBytes(StandardCharsets.UTF_8);
+        md5.update(keyBytes);
+        byte[] digest=md5.digest();
+
+        // 哈希码，截断为32位
+        long hashCode=((long)(digest[3] & 0xFF)<<24) |((long)(digest[2]& 0xFF)<<16) |((long)(digest[1] & 0xFF)<<8)|(digest[0] &0xFF);
+        return hashCode &0xffffffffL;
+    }
     // 根据物理节点，构建虚拟节点映射表
     public void Map() {
         for (String node : pNodes) {
@@ -52,7 +74,7 @@ public class ConsistentHashing {
     // 添加物理节点
     public void addPNodes(String node) {
         for (int i = 0; i < COPY_VALUES; i++) {
-            Long aLong = FNVHash(node + "_" + i);
+            Long aLong = hash(node + "_" + i);
             vNodes.put(aLong, node);
         }
     }
@@ -60,14 +82,14 @@ public class ConsistentHashing {
     // 删除物理节点
     public void removePNodes(String node) {
         for (int i = 0; i < COPY_VALUES; i++) {
-            Long aLong = FNVHash(node + "_" + i);
+            Long aLong = hash(node + "_" + i);
             vNodes.remove(aLong);
         }
     }
 
     //查找对象(数据)映射的节点
     public String getDataNode(String object) {
-        Long aLong = FNVHash(object);
+        Long aLong = hash(object);
         SortedMap<Long, String> map = vNodes.tailMap(aLong);
         Long key = map.isEmpty() ? vNodes.firstKey() : map.firstKey();
         return vNodes.get(key);
@@ -103,4 +125,6 @@ public class ConsistentHashing {
         long l1 = System.currentTimeMillis();
         System.out.println(l1-l);
     }
+
+
 }
