@@ -77,6 +77,7 @@ public class SerHander extends SimpleChannelInboundHandler<FullHttpRequest> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, FullHttpRequest fullHttpRequest) throws Exception {
+        System.out.println(channelHandlerContext.channel().remoteAddress());
         byte[] bytes = ByteBufUtil.getBytes(fullHttpRequest.content());
         System.out.println(new String(bytes, StandardCharsets.UTF_8));
     }

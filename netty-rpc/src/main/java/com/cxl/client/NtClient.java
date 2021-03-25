@@ -41,8 +41,6 @@ public class NtClient {
                        .handler(new ChannelInitializer<SocketChannel>() {
                            @Override
                            protected void initChannel(SocketChannel ch) {
-                               ch.pipeline().addLast(new HttpClientCodec());
-                               ch.pipeline().addLast(new HttpObjectAggregator(65535));
                                ch.pipeline().addLast(new CliHandler());
                            }
                        });
@@ -51,12 +49,8 @@ public class NtClient {
 
             while (true) {
                 String s = input.readLine();
-                DefaultFullHttpRequest defaultFullHttpRequest = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.POST, new URI("https://39.97.209.17:8000").getPath(), Unpooled.wrappedBuffer(s.getBytes(StandardCharsets.UTF_8)));
-                defaultFullHttpRequest.headers().set(HttpHeaderNames.HOST,host);
-                defaultFullHttpRequest.headers().set(HttpHeaderNames.CONNECTION,HttpHeaderValues.KEEP_ALIVE);
-                defaultFullHttpRequest.headers().set(HttpHeaderNames.CONTENT_LENGTH,defaultFullHttpRequest.content().readableBytes());
 //                channel.writeAndFlush(s+ "\r\n");
-                channel.writeAndFlush(defaultFullHttpRequest).sync();
+                channel.writeAndFlush(s).sync();
             }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -68,8 +62,8 @@ public class NtClient {
 
 
     public static void main(String[] args) throws InterruptedException, URISyntaxException {
-        new NtClient("121.199.21.197",8000).start();
-//        new NtClient("127.0.0.1",9003).start();
+//        new NtClient("121.199.21.197",8700).start();
+        new NtClient("127.0.0.1",8700).start();
 //        new NtClient("39.97.209.17",9003).start();
     }
 }
