@@ -35,8 +35,8 @@ public class NtServer {
                       .childHandler(new ChannelInitializer<SocketChannel>() {
                           @Override
                           protected void initChannel(SocketChannel channel) throws Exception {
-                              channel.pipeline().addLast(new HttpServerCodec());
                               channel.pipeline().addLast(new HttpObjectAggregator(65535));
+                              channel.pipeline().addLast(new HttpServerCodec());
 //                              channel.pipeline().addLast(new ChunkedWriteHandler());
                               channel.pipeline().addLast(new SerHander());
                           }

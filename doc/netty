@@ -1,0 +1,20 @@
+netty分三层:
+     网络通信层:1.ServerBootstrap
+               2.serverSocketChanel
+               3.socketChannel
+
+     事件调度层:
+               1.eventloop
+               2.eventLoopgroup(sub reactor)(线程池)
+               3.task pool
+
+
+
+     服务编排层:
+              1.ChannelPipeline(管理handler的顺序)
+              2.channelhandler
+
+
+
+责任链模式:netty pipeline实现
+

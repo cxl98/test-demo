@@ -63,7 +63,7 @@ public class NtClient {
 
     public static void main(String[] args) throws InterruptedException, URISyntaxException {
 //        new NtClient("121.199.21.197",8700).start();
-        new NtClient("127.0.0.1",8700).start();
+        new NtClient("127.0.0.1",9000).start();
 //        new NtClient("39.97.209.17",9003).start();
     }
 }
