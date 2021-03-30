@@ -4,15 +4,15 @@ netty分三层:
                3.socketChannel
 
      事件调度层:
-               1.eventloop
-               2.eventLoopgroup(sub reactor)(线程池)
+               1.eventLoop
+               2.eventLoopGroup(sub reactor)(线程池)
                3.task pool
 
 
 
      服务编排层:
               1.ChannelPipeline(管理handler的顺序)
-              2.channelhandler
+              2.ChannelHandler
 
 
 
