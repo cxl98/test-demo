@@ -1,10 +1,4 @@
-2020-08-06 21:31:40 360 [ Thread-0:0]-[ INFO ]com.cxl.autoproperties.AtuoProperties.run(AtuoProperties.java:26)
-启动监听配置文件
-2020-08-06 21:31:40 367 [ Thread-0:7]-[ INFO ]com.cxl.autoproperties.AtuoProperties.loadAllConfigFiles(AtuoProperties.java:42)
-加载配置文件setting/config.properties
-2020-08-06 21:31:40 391 [ Thread-0:31]-[ INFO ]com.cxl.autoproperties.AtuoProperties.loadPropertiesFile(AtuoProperties.java:58)
-load properties:xxx==111
-2020-08-06 21:33:10 395 [ Thread-0:90035]-[ INFO ]com.cxl.autoproperties.AtuoProperties.loadAllConfigFiles(AtuoProperties.java:42)
-加载配置文件setting/config.properties
-2020-08-06 21:33:10 397 [ Thread-0:90037]-[ INFO ]com.cxl.autoproperties.AtuoProperties.loadPropertiesFile(AtuoProperties.java:58)
-load properties:xxx==222
+2021-04-08 16:51:47 962 [ main:0]-[ INFO ]com.baidu.aip.client.BaseClient.getAccessToken(BaseClient.java:199)
+get access_token success. current state: STATE_AIP_AUTH_OK
+2021-04-08 16:51:47 966 [ main:4]-[ DEBUG ]com.baidu.aip.client.BaseClient.getAccessToken(BaseClient.java:217)
+current state after check priviledge: STATE_TRUE_AIP_USER
