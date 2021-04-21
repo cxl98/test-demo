@@ -44,12 +44,11 @@ public class UserController {
 
     @RequestMapping("/createGroups")
     @ResponseBody
-    public Map createGroups(@RequestBody ChatWithGroup chat) {
+    public Map<String,Object> createGroups(@RequestBody ChatWithGroup chat) {
         Map<String, Object> map = new HashMap<>();
         if (ChatGroup.isExist(chat.getGroupName())) {
             map.put("code", "300");
             map.put("data", "群聊名字已经存在!!");
-            return map;
         } else {
             List<String> members=chat.getGroupMembers();
             ChannelGroup group=new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
@@ -71,13 +70,13 @@ public class UserController {
             ChatGroup.addChatGroup(chat.getGroupName(),group);
             map.put("code","200");
             map.put("data",chat);
-            return map;
         }
+        return map;
     }
 
     @RequestMapping("/joinGroups")
     @ResponseBody
-    public Map joinGroups(String channelId,String groupName){
+    public Map<String,Object> joinGroups(String channelId,String groupName){
         Map<String,Object> map=new HashMap<>();
         if (ChatGroup.isExist(groupName)){
             map.put("code","200");

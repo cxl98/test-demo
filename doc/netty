@@ -11,7 +11,7 @@ netty分三层:
 
 
      服务编排层:
-              1.ChannelPipeline(管理handler的顺序)
+              1.ChannelPipeline(管理handler的顺序)(双向链表)
               2.ChannelHandler
 
 
