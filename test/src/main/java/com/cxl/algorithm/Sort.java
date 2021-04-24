@@ -1,6 +1,8 @@
 package com.cxl.algorithm;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Sort {
     public int[] dubbleSort(int[] array) {
@@ -258,14 +260,44 @@ public class Sort {
         return array;
     }
 
+
+
+    public static int[] twoSum(int[] nums, int target) {
+            for (int i = 0; i < nums.length; i++) {
+                for (int j = i+1; j <nums.length ; j++) {
+                    if (target==nums[i]+nums[j]){
+                        return new int[]{i, j};
+                    }
+                }
+            }
+        throw new IllegalArgumentException("NO tow sum solution");
+    }
+
+
+    public static int [] towSum1(int[] nums,int target){
+        Map<Integer,Integer> map=new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int res = target - nums[i];
+            if (map.containsKey(res)){
+                return new int[]{map.get(res),i};
+            }
+            map.put(nums[i],i);
+        }
+        throw new IllegalArgumentException("NO tow sum solution");
+    }
     public static void main(String[] args) {
 
         int array[] = {2, 3, 4, 8, 5, 1, 1, 21, 4, 12};
-        Sort sort = new Sort();
-//        int[] ints = sort.quitSort(array, 0, array.length - 1);
-        int[] ints = sort.heapSort(array);
-        for (int item : ints) {
-            System.out.println(item);  
+//        Sort sort = new Sort();
+////        int[] ints = sort.quitSort(array, 0, array.length - 1);
+//        int[] ints = sort.heapSort(array);
+//        for (int item : ints) {
+//            System.out.println(item);
+//        }
+        int[] ints = towSum1(array, 33);
+        for (int item: ints) {
+            System.out.println(item);
         }
+
     }
 }
