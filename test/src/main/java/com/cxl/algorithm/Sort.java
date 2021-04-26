@@ -5,6 +5,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Sort {
+
+    /**
+     * O(n)
+     * @param array no sort Array
+     * @return sort Array
+     */
     public int[] dubbleSort(int[] array) {
         if (0 == array.length) {
             return array;
@@ -21,6 +27,11 @@ public class Sort {
         return array;
     }
 
+    /**
+     *
+     * @param array no sort Array
+     * @return sort Array
+     */
     public int[] dubbleSort1(int[] array) {
         if (0 == array.length) return array;
         for (int i = 0; i < array.length; i++) {
