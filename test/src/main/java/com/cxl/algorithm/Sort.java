@@ -7,7 +7,7 @@ import java.util.Map;
 public class Sort {
 
     /**
-     * O(n)
+     * O(n^2)  稳定
      * @param array no sort Array
      * @return sort Array
      */
@@ -46,6 +46,12 @@ public class Sort {
         return array;
     }
 
+    /**
+     * 选择排序
+     * O(n^2)  不稳定
+     * @param array 未排序数组
+     * @return 排序完的数组
+     */
     public int[] selectionSort(int[] array) {
         if (0 == array.length) return array;
         for (int i = 0; i < array.length; i++) {
@@ -62,6 +68,12 @@ public class Sort {
         return array;
     }
 
+    /**
+     * 插入排序
+     *  O(n^2) 稳定
+     * @param array
+     * @return
+     */
     public int[] insertionSort(int[] array) {
         if (0 == array.length) {
             return array;
@@ -80,8 +92,8 @@ public class Sort {
     }
 
     /**
-     * 希尔
-     *
+     * 希尔  不稳定
+     *  O(n log n)
      * @param array
      * @return
      */
@@ -123,6 +135,12 @@ public class Sort {
 //        return array;
 //    }
 
+    /**
+     * 归并排序
+     * O(n log n) 稳定
+     * @param array
+     * @return
+     */
     public int[] mergeSort(int[] array) {
         if (2 > array.length) {
             return array;
@@ -149,6 +167,14 @@ public class Sort {
         return result;
     }
 
+    /**
+     * 快速排序
+     * O(nlog n) 不稳定
+     * @param array
+     * @param start
+     * @param end
+     * @return
+     */
     public int[] quitSort(int[] array, int start, int end) {
         if (array.length < 1 || start < 0 || end > array.length || start > end) {
             return array;
@@ -187,7 +213,7 @@ public class Sort {
 
     /**
      * 堆排序
-     *
+     *O(nlog n) 不稳定
      * @param array
      * @return
      */
@@ -239,6 +265,12 @@ public class Sort {
         }
     }
 
+    /**
+     * 计数排序
+     * O(n+k) 稳定
+     * @param array
+     * @return
+     */
     public int[] countSort(int[] array) {
         if (array.length == 0) {
             return array;
@@ -300,7 +332,7 @@ public class Sort {
 
         int array[] = {2, 3, 4, 8, 5, 1, 1, 21, 4, 12};
 //        Sort sort = new Sort();
-////        int[] ints = sort.quitSort(array, 0, array.length - 1);
+//        int[] ints = sort.quitSort(array, 0, array.length - 1);
 //        int[] ints = sort.heapSort(array);
 //        for (int item : ints) {
 //            System.out.println(item);
