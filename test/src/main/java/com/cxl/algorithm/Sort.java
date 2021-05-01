@@ -331,16 +331,16 @@ public class Sort {
     public static void main(String[] args) {
 
         int array[] = {2, 3, 4, 8, 5, 1, 1, 21, 4, 12};
-//        Sort sort = new Sort();
+        Sort sort = new Sort();
 //        int[] ints = sort.quitSort(array, 0, array.length - 1);
-//        int[] ints = sort.heapSort(array);
-//        for (int item : ints) {
-//            System.out.println(item);
-//        }
-        int[] ints = towSum1(array, 33);
-        for (int item: ints) {
+        int[] ints = sort.heapSort(array);
+        for (int item : ints) {
             System.out.println(item);
         }
+//        int[] ints = towSum1(array, 33);
+//        for (int item: ints) {
+//            System.out.println(item);
+//        }
 
     }
 }
