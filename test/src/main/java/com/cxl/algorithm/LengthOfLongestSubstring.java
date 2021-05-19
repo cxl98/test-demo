@@ -5,6 +5,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * @author cxl
+ */
 public class LengthOfLongestSubstring {
     public int lengthOfLongestSubstring(String s) {
         int n = s.length();
