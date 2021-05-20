@@ -33,7 +33,9 @@ public class Sort {
      * @return sort Array
      */
     public int[] dubbleSort1(int[] array) {
-        if (0 == array.length) return array;
+        if (0 == array.length) {
+            return array;
+        }
         for (int i = 0; i < array.length; i++) {
             for (int j = i; j < array.length - 1; j++) {
                 if (array[j + 1] < array[i]) {
@@ -53,7 +55,9 @@ public class Sort {
      * @return 排序完的数组
      */
     public int[] selectionSort(int[] array) {
-        if (0 == array.length) return array;
+        if (0 == array.length) {
+            return array;
+        }
         for (int i = 0; i < array.length; i++) {
             int minIndex = i;
             for (int j = i + 1; j < array.length; j++) {
