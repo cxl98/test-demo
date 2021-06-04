@@ -1,0 +1,12 @@
+unbutu 16 18 20 配置 docker
+1.vim /lib/systemd/system/docker.service
+2.修改ExecStart为：
+  ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock -H 0.0.0.0:2375
+
+3.重启
+  systemctl daemon-reload //重启虚拟机
+  systemctl restart docker //重启docker
+4.查看结果
+  systemctl status docker //查看docker状态
+  netstat -tulp //查看所有运行端口号
+  netstat -tnlp | grep:2375 //查看2375端口号状态
