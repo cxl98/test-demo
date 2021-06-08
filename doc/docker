@@ -9,4 +9,4 @@ unbutu 16 18 20 配置 docker
 4.查看结果
   systemctl status docker //查看docker状态
   netstat -tulp //查看所有运行端口号
-  netstat -tnlp | grep:2375 //查看2375端口号状态
+  netstat -tnlp | grep:2375 //查看2375端口号状态 -
