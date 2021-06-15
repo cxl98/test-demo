@@ -144,7 +144,6 @@ public class Trie {
         System.out.println(tree.has("abc"));
         tree.preTraverse(tree.getRoot());
         System.out.println();
-        //tree.printAllWords();
         for (String pre : prefix) {
             int num = tree.countPrefix(pre);
             System.out.println(pre + " " + num);
