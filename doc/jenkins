@@ -1,0 +1,6 @@
+jenkins：环境配置,默认jenkins会去/usr/bin当中寻找jdk运行环境。
+         所以，如果是自己下载的jdk安装在别的路径，需要通过ln -s命令，创建
+         软连接。
+         ln -s <jdk本身的位置> /usr/bin/java
+         jenkins在安装的时候会在系统中创建一个jenkins的用户名，并且该用户属于jenkins用户组。
+         如果在操作一些文件或者目录没有权限时，请考虑给jenkins组和jenkins用户赋予权限。
